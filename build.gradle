@@ -57,6 +57,8 @@ task copyJarToServer {
     }
 }
 
+// idk
+
 tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion
