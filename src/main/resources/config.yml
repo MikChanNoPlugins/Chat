@@ -1,0 +1,16 @@
+# This is an automatic property, do not change!
+configVersion: 1
+
+enableLocal: false
+localRadius: 100
+
+globalPrefix: "!"
+
+playerTemplate: '%player_name%'
+fromTemplate: '%player_name%'
+toTemplate: '%player_name%'
+
+localTemplate: '<:player:> :message:'
+globalTemplate: '<:player:> :message:'
+privateTemplate: '<:player_from: to :player_to:> :message:'
+consoleTemplate: '<CONSOLE to :player_to:> :message:'

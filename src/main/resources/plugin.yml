@@ -1,0 +1,61 @@
+name: MikChanNoChat
+version: '${version}'
+
+authors: [ 'George Endo (MikChan / wtlgo)' ]
+description: A very simple chat plugin
+website: https://github.com/MikChanNoPlugins
+
+prefix: MCnoChat
+main: dev.mikchan.chat.Chat
+api-version: 1.16
+
+load: STARTUP
+
+softdepend:
+  - Essentials
+  - PlaceholderAPI
+
+commands:
+  msg:
+    aliases:
+      - m
+      - tell
+      - whisper
+      - pm
+      - w
+      - t
+      - emsg
+      - epm
+      - etell
+      - ewhisper
+    permission: mcn.chat.msg
+    description: Send a private message to someone
+
+  reply:
+    aliases:
+      - r
+    permission: mcn.chat.reply
+    description: Reply to private message
+
+  mcnc_reload:
+    permission: mcn.chat.reload
+
+permissions:
+  mcn.chat.msg:
+    default: true
+  mcn.chat.reply:
+    default: true
+  mcn.chat.global:
+    default: true
+  mcn.chat.local:
+    default: true
+
+  mcn.chat.reload:
+    default: op
+  mcn.chat.colors:
+    default: op
+
+
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0
+  - dev.dejvokep:boosted-yaml-spigot:1.2
