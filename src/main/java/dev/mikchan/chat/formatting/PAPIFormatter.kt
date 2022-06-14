@@ -24,7 +24,11 @@ internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin)
             { prepareFromPlayer(from) },
             { prepareToPlayer(to) },
             { preparePlayer(to) },
-            { if (from.hasPermission("mcn.chat.colors")) ChatColor.stripColor(message) else message })
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
     }
 
     override fun formatConsole(to: Player, message: String): String {
@@ -32,7 +36,11 @@ internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin)
             { null },
             { prepareToPlayer(to) },
             { preparePlayer(to) },
-            { message })
+            {
+                ChatColor.translateAlternateColorCodes(
+                    '&', message
+                )
+            })
     }
 
     override fun formatGlobal(from: Player, message: String): String {
@@ -40,7 +48,11 @@ internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin)
             { prepareFromPlayer(from) },
             { null },
             { preparePlayer(from) },
-            { if (from.hasPermission("mcn.chat.colors")) ChatColor.stripColor(message) else message })
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
     }
 
     override fun formatLocal(from: Player, message: String): String {
@@ -48,7 +60,11 @@ internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin)
             { prepareFromPlayer(from) },
             { null },
             { preparePlayer(from) },
-            { if (from.hasPermission("mcn.chat.colors")) ChatColor.stripColor(message) else message })
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
     }
 
     override fun reload() {}

@@ -11,31 +11,35 @@ internal class DefaultFormatter(private val plugin: Chat) : CommonFormatter(plug
             { from.displayName },
             { to.displayName },
             { from.displayName },
-            { if (from.hasPermission("mcn.chat.colors")) ChatColor.stripColor(message) else message })
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
     }
 
     override fun formatConsole(to: Player, message: String): String {
-        return prepareTemplate(plugin.config.consoleTemplate,
-            { null },
-            { to.displayName },
-            { to.displayName },
-            { message })
+        return prepareTemplate(plugin.config.consoleTemplate, { null }, { to.displayName }, { to.displayName }, {
+            ChatColor.translateAlternateColorCodes(
+                '&', message
+            )
+        })
     }
 
     override fun formatGlobal(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.globalTemplate,
-            { from.displayName },
-            { null },
-            { from.displayName },
-            { if (from.hasPermission("mcn.chat.colors")) ChatColor.stripColor(message) else message })
+        return prepareTemplate(plugin.config.globalTemplate, { from.displayName }, { null }, { from.displayName }) {
+            if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                '&', message
+            ) else ChatColor.stripColor(message)
+        }
     }
 
     override fun formatLocal(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.localTemplate,
-            { from.displayName },
-            { null },
-            { from.displayName },
-            { if (from.hasPermission("mcn.chat.colors")) ChatColor.stripColor(message) else message })
+        return prepareTemplate(plugin.config.localTemplate, { from.displayName }, { null }, { from.displayName }, {
+            if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                '&', message
+            ) else ChatColor.stripColor(message)
+        })
     }
 
     override fun reload() {}
