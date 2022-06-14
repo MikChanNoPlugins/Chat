@@ -39,13 +39,6 @@ java {
     }
 }
 
-task copyJarToServer {
-    copy {
-        from "build/libs/$rootProject.name-${version}.jar"
-        into "C:\\Users\\georg_000\\Desktop\\Spigot\\TestServer\\plugins"
-    }
-}
-
 tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion
