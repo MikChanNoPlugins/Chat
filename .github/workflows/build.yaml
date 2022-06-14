@@ -28,4 +28,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: "MikChanNoChat"
-          path: build/libs
+          path: |
+            build/libs/
+            LICENSE
+
