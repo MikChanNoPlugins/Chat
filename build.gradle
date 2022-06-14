@@ -13,18 +13,19 @@ publishing {
             name = "GitHub"
             url = "https://maven.pkg.github.com/MikChanNoPlugins/Chat"
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }
 
     publications {
-        register("jar", MavenPublication) {
-            from(components["java"])
-            pom {
-                url.set("https://github.com/MikChanNoPlugins/Chat.git")
-            }
+        gpr(MavenPublication) {
+            groupId = group
+            artifactId = 'chat'
+            version = version
+
+            from(components.java)
         }
     }
 }
