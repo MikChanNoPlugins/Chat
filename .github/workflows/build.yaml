@@ -27,5 +27,5 @@ jobs:
         
       - uses: actions/upload-artifact@v3
         with:
-          name: MikChanNoChat
+          name: "MikChanNoChat-${{ steps.vars.outputs.branch }}-${{ steps.vars.outputs.sha_short }}"
           path: build/libs
