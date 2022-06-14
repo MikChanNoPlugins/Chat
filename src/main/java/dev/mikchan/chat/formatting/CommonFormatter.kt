@@ -1,12 +1,13 @@
 package dev.mikchan.chat.formatting
 
 import dev.mikchan.chat.Chat
+import org.bukkit.ChatColor
 
 internal abstract class CommonFormatter(private val plugin: Chat) : IFormatter {
     protected fun prepareTemplate(
         template: String, from: () -> String?, to: () -> String?, player: () -> String?, message: () -> String?
     ): String {
-        var res = template
+        var res = ChatColor.translateAlternateColorCodes('&', template)
 
         if (res.contains(":player_from:")) {
             val fromPlayer = from() ?: ""
