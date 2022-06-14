@@ -5,12 +5,12 @@ plugins {
 }
 
 group = 'dev.mikchan'
-version = '0.0.4'
+version = '0.0.5'
 
 publishing {
     repositories {
         maven {
-            name = "GitHubPackages"
+            name = "GitHub"
             url = "https://maven.pkg.github.com/MikChanNoPlugins/Chat"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
@@ -20,12 +20,11 @@ publishing {
     }
 
     publications {
-        maven(MavenPublication) {
-            groupId = group
-            artifactId = 'chat'
-            version = version
-
-            from components.java
+        register("jar", MavenPublication) {
+            from(components["java"])
+            pom {
+                url.set("https://github.com/MikChanNoPlugins/Chat.git")
+            }
         }
     }
 }
