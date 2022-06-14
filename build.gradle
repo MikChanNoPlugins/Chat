@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'dev.mikchan'
-version = '0.0.3'
+version = '0.0.4'
 
 publishing {
     repositories {
@@ -16,6 +16,16 @@ publishing {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
             }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = 'chat'
+            version = version
+
+            from components.java
         }
     }
 }
