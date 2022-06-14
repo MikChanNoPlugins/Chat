@@ -1,11 +1,10 @@
 package dev.mikchan.chat.formatting
 
 import dev.mikchan.chat.Chat
-import dev.mikchan.chat.utility.IReloadable
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
-internal class DefaultFormatter(private val plugin: Chat) : CommonFormatter(plugin), IReloadable {
+internal class DefaultFormatter(private val plugin: Chat) : CommonFormatter(plugin) {
     override fun formatPrivate(from: Player, to: Player, message: String): String {
         return prepareTemplate(plugin.config.privateTemplate,
             { from.displayName },
@@ -41,6 +40,4 @@ internal class DefaultFormatter(private val plugin: Chat) : CommonFormatter(plug
             ) else ChatColor.stripColor(message)
         })
     }
-
-    override fun reload() {}
 }

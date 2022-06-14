@@ -1,12 +1,11 @@
 package dev.mikchan.chat.formatting
 
 import dev.mikchan.chat.Chat
-import dev.mikchan.chat.utility.IReloadable
 import me.clip.placeholderapi.PlaceholderAPI
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
-internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin), IReloadable {
+internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin) {
     private fun prepareFromPlayer(player: Player): String {
         return PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
     }
@@ -66,6 +65,4 @@ internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin)
                 ) else ChatColor.stripColor(message)
             })
     }
-
-    override fun reload() {}
 }

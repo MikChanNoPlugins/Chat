@@ -1,7 +1,11 @@
 package dev.mikchan.chat.config
 
 
-internal class DefaultConfig : ReloadableConfig() {
+internal class DefaultConfig : IConfig {
+    override fun reload(): Boolean {
+        return true
+    }
+
     override var enableLocal: Boolean
         get() = false
         set(_) {}

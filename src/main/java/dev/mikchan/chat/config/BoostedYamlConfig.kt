@@ -10,7 +10,7 @@ import dev.dejvokep.boostedyaml.spigot.SpigotSerializer
 import java.io.File
 import java.io.InputStream
 
-internal class BoostedYamlConfig(document: File, resource: InputStream) : ReloadableConfig() {
+internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfig {
     private var config: YamlDocument = YamlDocument.create(
         document,
         resource,
@@ -21,13 +21,7 @@ internal class BoostedYamlConfig(document: File, resource: InputStream) : Reload
     )
 
     override fun reload(): Boolean {
-        val res = config.reload()
-
-        if (res) {
-            return super.reload()
-        }
-
-        return false
+        return config.reload()
     }
 
     override var enableLocal: Boolean
