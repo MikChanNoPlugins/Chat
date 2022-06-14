@@ -37,8 +37,8 @@ internal class DefaultConfig : ReloadableConfig() {
     override var privateTemplate: String
         get() = "<:player_from: to :player_to:> :message:"
         set(_) {}
+
     override var consoleTemplate: String
         get() = "<CONSOLE to :player_to:> :message:"
-        set(value) {}
-
+        set(_) {}
 }

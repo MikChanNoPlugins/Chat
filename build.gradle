@@ -15,16 +15,6 @@ repositories {
     }
 
     maven {
-        name = 'sonatype'
-        url = 'https://oss.sonatype.org/content/groups/public/'
-    }
-
-    maven {
-        name 'essentialsx-releases'
-        url 'https://repo.essentialsx.net/releases/'
-    }
-
-    maven {
         name 'placeholderapi'
         url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
     }
@@ -33,7 +23,6 @@ repositories {
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
 
-    compileOnly 'net.essentialsx:EssentialsX:2.19.0'
     compileOnly 'me.clip:placeholderapi:2.10.9'
 
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0'
@@ -56,8 +45,6 @@ task copyJarToServer {
         into "C:\\Users\\georg_000\\Desktop\\Spigot\\TestServer\\plugins"
     }
 }
-
-// idk
 
 tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
