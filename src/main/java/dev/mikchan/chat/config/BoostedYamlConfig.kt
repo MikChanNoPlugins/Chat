@@ -11,7 +11,7 @@ import java.io.File
 import java.io.InputStream
 
 internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfig {
-    private var config: YamlDocument = YamlDocument.create(
+    private val config: YamlDocument = YamlDocument.create(
         document,
         resource,
         GeneralSettings.builder().setSerializer(SpigotSerializer.getInstance()).build(),
