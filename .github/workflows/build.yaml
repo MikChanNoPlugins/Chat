@@ -24,10 +24,13 @@ jobs:
 
       - name: Execute Gradle build
         run: ./gradlew build
-                
+        
+      - id: commit
+        uses: pr-mpt/actions-commit-hash@v1
+        
       - uses: actions/upload-artifact@v3
         with:
-          name: "MikChanNoChat"
+          name: MikChanNoChat-${{ steps.commit.outputs.short }}.zip
           path: |
             build/libs/
             LICENSE.txt
