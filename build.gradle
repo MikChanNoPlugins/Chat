@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.7.0'
-    id 'org.jetbrains.dokka' version "1.6.21"
+    // id 'org.jetbrains.dokka' version "1.6.21"
     id 'maven-publish'
 }
 
@@ -65,7 +65,7 @@ java {
     }
 
     withSourcesJar()
-    withJavadocJar()
+    // withJavadocJar()
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -95,6 +95,8 @@ compileTestKotlin {
     }
 }
 
+/*
 dokkaHtml {
     outputDirectory.set(file("${buildDir}/dokka"))
 }
+ */
