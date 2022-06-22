@@ -52,7 +52,7 @@ dependencies {
     compileOnly 'me.clip:placeholderapi:2.10.9'
 
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0'
-    implementation 'dev.dejvokep:boosted-yaml-spigot:1.2'
+    compileOnly 'dev.dejvokep:boosted-yaml-spigot:1.2'
 }
 
 def targetJavaVersion = 8
