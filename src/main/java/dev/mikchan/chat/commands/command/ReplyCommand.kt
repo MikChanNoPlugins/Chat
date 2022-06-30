@@ -39,9 +39,18 @@ internal class ReplyCommand(private val plugin: Chat, private val history: Mutab
             return false
         }
 
-        sender.sendMessage(formattedMessage)
+        if (recipient is Player) {
+            sender.sendMessage(recipient.uniqueId, formattedMessage)
+        } else {
+            sender.sendMessage(formattedMessage)
+
+        }
         if (recipient != sender) {
-            recipient.sendMessage(formattedMessage)
+            if (sender is Player) {
+                recipient.sendMessage(sender.uniqueId, formattedMessage)
+            } else {
+                recipient.sendMessage(formattedMessage)
+            }
         }
 
         if (recipientUUID != null) {

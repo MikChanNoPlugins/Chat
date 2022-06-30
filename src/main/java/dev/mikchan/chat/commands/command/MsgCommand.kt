@@ -36,9 +36,14 @@ internal class MsgCommand(private val plugin: Chat, private val history: Mutable
             plugin.formatter.formatConsole(user, message)
         }
 
-        user.sendMessage(formattedMessage)
-        if (user != sender) {
+        if (sender is Player) {
+            user.sendMessage(sender.uniqueId, formattedMessage)
+        } else {
             sender.sendMessage(formattedMessage)
+        }
+
+        if (user != sender) {
+            sender.sendMessage(user.uniqueId, formattedMessage)
         }
 
         val senderUUID = if (sender is Player) sender.uniqueId.toString() else "CONSOLE"

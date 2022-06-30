@@ -10,7 +10,7 @@ internal class MCNCListener(private val plugin: Chat) : Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun onMCNCEChatEvent(event: MCNChatEvent) {
         for (recipient in event.recipients) {
-            recipient.sendMessage(event.formattedMessage)
+            recipient.sendMessage(event.sender.uniqueId, event.formattedMessage)
         }
 
         plugin.server.consoleSender.sendMessage(event.formattedMessage)
