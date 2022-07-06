@@ -5,8 +5,8 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'dev.mikchan'
-version = '0.0.12'
+group = 'dev.mikchan.mcnp'
+version = '0.0.13'
 
 publishing {
     repositories {
