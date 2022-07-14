@@ -53,8 +53,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10'
     compileOnly 'dev.dejvokep:boosted-yaml-spigot:1.2'
-
-    dokkaGfmPlugin 'org.jetbrains.dokka:kotlin-as-java-plugin:1.7.10'
 }
 
 def targetJavaVersion = 8
