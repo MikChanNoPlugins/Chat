@@ -55,5 +55,5 @@ permissions:
     default: op
 
 libraries:
-  - org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0
+  - org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10
   - dev.dejvokep:boosted-yaml-spigot:1.2
