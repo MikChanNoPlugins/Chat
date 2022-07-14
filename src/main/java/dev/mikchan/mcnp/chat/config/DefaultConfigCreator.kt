@@ -1,10 +1,10 @@
 package dev.mikchan.mcnp.chat.config
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import java.io.File
 
 internal class DefaultConfigCreator : IConfigCreator {
-    override fun create(plugin: Chat): IConfig {
+    override fun create(plugin: ChatPlugin): IConfig {
         val resource = plugin.getResource("config.yml")
 
         return if (resource != null) {

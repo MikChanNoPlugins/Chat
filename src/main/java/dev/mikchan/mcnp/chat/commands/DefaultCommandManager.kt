@@ -1,12 +1,12 @@
 package dev.mikchan.mcnp.chat.commands
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.commands.command.ICommand
 import dev.mikchan.mcnp.chat.commands.command.MsgCommand
 import dev.mikchan.mcnp.chat.commands.command.ReloadCommand
 import dev.mikchan.mcnp.chat.commands.command.ReplyCommand
 
-internal class DefaultCommandManager(private val plugin: Chat) : ICommandManager {
+internal class DefaultCommandManager(private val plugin: ChatPlugin) : ICommandManager {
     private val messageHistory: MutableMap<String, String> = mutableMapOf()
 
     private val executors: Map<String, ICommand> = mapOf(

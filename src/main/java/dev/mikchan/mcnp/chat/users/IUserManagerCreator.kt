@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.users
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 
 interface IUserManagerCreator {
-    fun create(plugin: Chat): IUserManager
+    fun create(plugin: ChatPlugin): IUserManager
 }

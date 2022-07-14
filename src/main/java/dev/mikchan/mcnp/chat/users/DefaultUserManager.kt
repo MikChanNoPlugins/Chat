@@ -1,11 +1,10 @@
 package dev.mikchan.mcnp.chat.users
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import org.bukkit.entity.Player
 import java.util.UUID
-import kotlin.streams.toList
 
-internal open class DefaultUserManager(private val plugin: Chat) : IUserManager {
+internal open class DefaultUserManager(private val plugin: ChatPlugin) : IUserManager {
     override fun findSimilar(search: String, playerContext: Player?): List<String> {
         @Suppress("UnnecessaryVariable")
         val res = plugin.server.onlinePlayers.stream().filter { player -> player.displayName.startsWith(search, true) }

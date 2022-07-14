@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.formatting
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 
 interface IFormatterCreator {
-    fun create(plugin: Chat): IFormatter
+    fun create(plugin: ChatPlugin): IFormatter
 }

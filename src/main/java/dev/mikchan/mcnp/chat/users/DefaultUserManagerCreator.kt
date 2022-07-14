@@ -1,9 +1,9 @@
 package dev.mikchan.mcnp.chat.users
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 
 internal class DefaultUserManagerCreator : IUserManagerCreator {
-    override fun create(plugin: Chat): IUserManager {
+    override fun create(plugin: ChatPlugin): IUserManager {
         return DefaultUserManager(plugin)
     }
 }

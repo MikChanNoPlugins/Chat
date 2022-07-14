@@ -1,10 +1,10 @@
 package dev.mikchan.mcnp.chat.formatting
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
-internal class DefaultFormatter(private val plugin: Chat) : CommonFormatter(plugin) {
+internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatter(plugin) {
     override fun formatPrivate(from: Player, to: Player, message: String): String {
         return prepareTemplate(plugin.config.privateTemplate,
             { from.displayName },

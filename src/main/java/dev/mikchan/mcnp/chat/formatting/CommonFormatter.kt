@@ -1,9 +1,9 @@
 package dev.mikchan.mcnp.chat.formatting
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import org.bukkit.ChatColor
 
-internal abstract class CommonFormatter(private val plugin: Chat) : IFormatter {
+internal abstract class CommonFormatter(private val plugin: ChatPlugin) : IFormatter {
     protected fun prepareTemplate(
         template: String, from: () -> String?, to: () -> String?, player: () -> String?, message: () -> String?
     ): String {

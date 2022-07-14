@@ -1,11 +1,11 @@
 package dev.mikchan.mcnp.chat.commands.command
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 
-internal class ReloadCommand(private val plugin: Chat) : ICommand {
+internal class ReloadCommand(private val plugin: ChatPlugin) : ICommand {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val res = plugin.config.reload()
 

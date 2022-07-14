@@ -6,7 +6,7 @@ description: A very simple chat plugin
 website: https://github.com/MikChanNoPlugins
 
 prefix: MCnChat
-main: dev.mikchan.mcnp.chat.Chat
+main: dev.mikchan.mcnp.chat.ChatPlugin
 api-version: 1.16
 
 load: STARTUP

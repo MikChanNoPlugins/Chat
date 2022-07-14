@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.commands
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 
 interface ICommandManagerCreator {
-    fun create(plugin: Chat): ICommandManager
+    fun create(plugin: ChatPlugin): ICommandManager
 }

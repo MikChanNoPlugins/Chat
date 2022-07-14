@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.events
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 
 interface IEventManagerCreator {
-    fun create(plugin: Chat): IEventManager
+    fun create(plugin: ChatPlugin): IEventManager
 }

@@ -1,9 +1,9 @@
 package dev.mikchan.mcnp.chat.events
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 
 internal class DefaultEventManagerCreator : IEventManagerCreator {
-    override fun create(plugin: Chat): IEventManager {
+    override fun create(plugin: ChatPlugin): IEventManager {
         return DefaultEventManager(plugin)
     }
 }

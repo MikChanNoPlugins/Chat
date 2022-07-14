@@ -1,6 +1,6 @@
 package dev.mikchan.mcnp.chat.events.listener
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.events.event.MCNChatEvent
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -10,7 +10,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import kotlin.streams.asSequence
 
-internal class ChatListener(private val plugin: Chat) : Listener {
+internal class ChatListener(private val plugin: ChatPlugin) : Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun onAsyncMessage(event: AsyncPlayerChatEvent) {
         event.isCancelled = true

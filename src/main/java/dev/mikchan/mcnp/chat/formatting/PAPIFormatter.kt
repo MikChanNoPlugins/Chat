@@ -1,11 +1,11 @@
 package dev.mikchan.mcnp.chat.formatting
 
-import dev.mikchan.mcnp.chat.Chat
+import dev.mikchan.mcnp.chat.ChatPlugin
 import me.clip.placeholderapi.PlaceholderAPI
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
-internal class PAPIFormatter(private val plugin: Chat) : CommonFormatter(plugin) {
+internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(plugin) {
     private fun prepareFromPlayer(player: Player): String {
         return PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
     }
