@@ -53,13 +53,15 @@ dependencies {
 
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10'
     compileOnly 'dev.dejvokep:boosted-yaml-spigot:1.2'
+
+    dokkaGfmPlugin 'org.jetbrains.dokka:kotlin-as-java-plugin:1.7.10'
 }
 
 def targetJavaVersion = 8
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    sourceCompatibility = 16
-    targetCompatibility = 16
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
@@ -95,7 +97,12 @@ compileTestKotlin {
     }
 }
 
-
 dokkaHtml {
     outputDirectory.set(file("${buildDir}/dokka"))
+}
+
+javadocJar {
+    archiveClassifier.set("javadoc")
+    dependsOn("dokkaHtml")
+    from("$buildDir/dokka")
 }
