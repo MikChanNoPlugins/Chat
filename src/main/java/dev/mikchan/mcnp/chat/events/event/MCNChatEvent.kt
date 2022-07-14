@@ -5,9 +5,38 @@ import org.bukkit.event.Cancellable
 import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
 
+/**
+ * The plugins chat event.
+ *
+ * Intercepts [org.bukkit.event.player.AsyncPlayerChatEvent].
+ */
 @Suppress("unused")
 class MCNChatEvent(
-    val sender: Player, val recipients: Set<Player>, val isGlobal: Boolean, val message: String,
+    /**
+     * The player involved in the event.
+     */
+    val sender: Player,
+
+    /**
+     * Set of recipients that this chat message will be displayed to.
+     */
+    val recipients: Set<Player>,
+
+    /**
+     * Is this message globally visible.
+     *
+     * If [dev.mikchan.mcnp.chat.config.IConfig.enableLocal] is `false`, this value is always `true`.
+     */
+    val isGlobal: Boolean,
+
+    /**
+     * The raw message that the player is attempting to send.
+     */
+    val message: String,
+
+    /**
+     * Fully formatted message.
+     */
     val formattedMessage: String
 ) : Event(), Cancellable {
     private var cancelled = false

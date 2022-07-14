@@ -7,6 +7,9 @@ import dev.mikchan.mcnp.chat.formatting.IFormatter
 import dev.mikchan.mcnp.chat.users.IUserManager
 import org.bukkit.plugin.java.JavaPlugin
 
+/**
+ * The main plugin class.
+ */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class ChatPlugin : JavaPlugin() {
     val config: IConfig = dev.mikchan.mcnp.chat.Creators.config.create(this)

@@ -11,10 +11,36 @@ import dev.mikchan.mcnp.chat.formatting.IFormatterCreator
 import dev.mikchan.mcnp.chat.users.DefaultUserManagerCreator
 import dev.mikchan.mcnp.chat.users.IUserManagerCreator
 
+/**
+ * The object with all necessary builders.
+ *
+ * This object contains all necessary builders for [ChatPlugin] methods.
+ * It is possible to change the behavior of [ChatPlugin] by overriding these
+ * builders.
+ */
 object Creators {
+    /**
+     * The config builder.
+     */
     var config: IConfigCreator = DefaultConfigCreator()
+
+    /**
+     * The command manager builder.
+     */
     var commandManager: ICommandManagerCreator = DefaultCommandManagerCreator()
+
+    /**
+     * The formatter builder.
+     */
     var formatter: IFormatterCreator = DefaultFormatterCreator()
+
+    /**
+     * The user manager builder.
+     */
     var userManager: IUserManagerCreator = DefaultUserManagerCreator()
+
+    /**
+     * The event manager builder.
+     */
     var eventManager: IEventManagerCreator = DefaultEventManagerCreator()
 }
