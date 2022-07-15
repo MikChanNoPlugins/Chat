@@ -6,7 +6,8 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-internal class ReplyCommand(private val plugin: ChatPlugin, private val history: MutableMap<String, String>) : ICommand {
+internal class ReplyCommand(private val plugin: ChatPlugin, private val history: MutableMap<String, String>) :
+    ICommand {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val msg = args.joinToString(" ").trim()
         if (msg.isEmpty()) {
@@ -45,6 +46,7 @@ internal class ReplyCommand(private val plugin: ChatPlugin, private val history:
             sender.sendMessage(formattedMessage)
 
         }
+
         if (recipient != sender) {
             if (sender is Player) {
                 recipient.sendMessage(sender.uniqueId, formattedMessage)
