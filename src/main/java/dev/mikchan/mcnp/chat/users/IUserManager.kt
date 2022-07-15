@@ -29,6 +29,7 @@ interface IUserManager {
      * Finds an online player based on uuid.
      *
      * @param search An uuid in [String] format.
+     *
      * @return The player object, if found. `null` if player is not found, not online, or [search] is not a valid UUID.
      */
     fun findByUUID(search: String): Player?
