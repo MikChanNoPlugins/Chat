@@ -18,7 +18,7 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
         var msg = event.message.trim()
         val isGlobal = !plugin.config.enableLocal || msg.startsWith(plugin.config.globalPrefix)
 
-        if ((!event.player.hasPermission("mcn.chat.global") && isGlobal) || (!event.player.hasPermission("mcn.chat.global") && isGlobal)) {
+        if (!event.player.hasPermission("mcn.chat.global") && isGlobal) {
             plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
                 event.player.sendMessage(ChatColor.RED.toString() + "You have no permission to do that!")
             }
