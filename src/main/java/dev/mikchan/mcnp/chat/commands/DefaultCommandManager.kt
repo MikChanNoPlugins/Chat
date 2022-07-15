@@ -10,7 +10,7 @@ internal class DefaultCommandManager(private val plugin: ChatPlugin) : ICommandM
     private val messageHistory: MutableMap<String, String> = mutableMapOf()
 
     private val executors: Map<String, ICommand> = mapOf(
-        "mcnc_reload" to ReloadCommand(plugin),
+        "mcn_chat" to ReloadCommand(plugin),
         "msg" to MsgCommand(plugin, messageHistory),
         "reply" to ReplyCommand(plugin, messageHistory)
     )

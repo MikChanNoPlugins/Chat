@@ -36,8 +36,10 @@ commands:
     permission: mcn.chat.reply
     description: Reply to private message
 
-  mcnc_reload:
-    permission: mcn.chat.reload
+  mcn_chat:
+    aliases:
+      - chat
+    permission: mcn.chat.admin.*
 
 permissions:
   mcn.chat.msg:
@@ -49,10 +51,16 @@ permissions:
   mcn.chat.local:
     default: true
 
-  mcn.chat.reload:
-    default: op
   mcn.chat.colors:
     default: op
+
+  mcn.chat.admin.*:
+    default: op
+    children:
+      - mcn.chat.admin.reload
+  mcn.chat.admin.reload:
+    default: op
+
 
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10
