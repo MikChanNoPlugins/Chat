@@ -6,9 +6,9 @@ import java.util.UUID
 
 internal open class DefaultUserManager(private val plugin: ChatPlugin) : IUserManager {
     override fun findSimilar(search: String, playerContext: Player?): List<String> {
-        @Suppress("UnnecessaryVariable")
-        val res = plugin.server.onlinePlayers.stream().filter { player -> player.displayName.startsWith(search, true) }
-            .map { player -> player.displayName }.toList()
+        @Suppress("UnnecessaryVariable") val res =
+            plugin.server.onlinePlayers.filter { player -> player.displayName.startsWith(search, true) }
+                .map { player -> player.displayName }.toList()
 
         // TODO: Weird feature. Is it even needed?
         /*
