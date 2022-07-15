@@ -6,20 +6,16 @@ import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
 internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(plugin) {
-    private fun papiSetPlaceholders(player: Player, template: String): String {
-        return PlaceholderAPI.setPlaceholders(player, template)
-    }
-
     private fun prepareFromPlayer(player: Player): String {
-        return papiSetPlaceholders(player, plugin.config.fromTemplate)
+        return PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
     }
 
     private fun prepareToPlayer(player: Player): String {
-        return papiSetPlaceholders(player, plugin.config.toTemplate)
+        return PlaceholderAPI.setPlaceholders(player, plugin.config.toTemplate)
     }
 
     private fun preparePlayer(player: Player): String {
-        return papiSetPlaceholders(player, plugin.config.playerTemplate)
+        return PlaceholderAPI.setPlaceholders(player, plugin.config.playerTemplate)
     }
 
     override fun formatPrivate(from: Player, to: Player, message: String): String {
