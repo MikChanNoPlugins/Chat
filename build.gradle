@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'dev.mikchan.mcnp'
-version = '0.0.18'
+version = '0.0.19'
 
 publishing {
     repositories {
@@ -24,7 +24,7 @@ publishing {
         gpr(MavenPublication) {
             groupId = group
             artifactId = 'chat'
-            version = version
+            // version = version
 
             from(components.java)
         }
