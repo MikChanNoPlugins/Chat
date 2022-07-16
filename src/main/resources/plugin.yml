@@ -2,7 +2,7 @@ name: MikChanNoChat
 version: '${version}'
 
 authors: [ 'George Endo (MikChan / wtlgo)' ]
-description: A very simple chat plugin
+description: A minimalistic chat plugin
 website: https://github.com/MikChanNoPlugins
 
 prefix: MCnChat
