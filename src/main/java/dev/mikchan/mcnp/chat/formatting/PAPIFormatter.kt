@@ -7,15 +7,22 @@ import org.bukkit.entity.Player
 
 internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(plugin) {
     private fun prepareFromPlayer(player: Player): String {
-        return PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
+        return ChatColor.translateAlternateColorCodes(
+            '&',
+            PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
+        )
     }
 
     private fun prepareToPlayer(player: Player): String {
-        return PlaceholderAPI.setPlaceholders(player, plugin.config.toTemplate)
+        return ChatColor.translateAlternateColorCodes(
+            '&', PlaceholderAPI.setPlaceholders(player, plugin.config.toTemplate)
+        )
     }
 
     private fun preparePlayer(player: Player): String {
-        return PlaceholderAPI.setPlaceholders(player, plugin.config.playerTemplate)
+        return ChatColor.translateAlternateColorCodes(
+            '&', PlaceholderAPI.setPlaceholders(player, plugin.config.playerTemplate)
+        )
     }
 
     override fun formatPrivate(from: Player, to: Player, message: String): String {
