@@ -9,10 +9,12 @@ import org.bukkit.event.Listener
 internal class MCNCListener(private val plugin: ChatPlugin) : Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun onMCNCEChatEvent(event: MCNChatEvent) {
-        for (recipient in event.recipients) {
-            recipient.sendMessage(event.sender.uniqueId, event.formattedMessage)
-        }
+        plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
+            for (recipient in event.recipients) {
+                recipient.sendMessage(event.sender.uniqueId, event.formattedMessage)
+            }
 
-        plugin.server.consoleSender.sendMessage(event.formattedMessage)
+            plugin.server.consoleSender.sendMessage(event.formattedMessage)
+        }
     }
 }
