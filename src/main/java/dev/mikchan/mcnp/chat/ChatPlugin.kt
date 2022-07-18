@@ -17,11 +17,11 @@ class ChatPlugin : JavaPlugin() {
         private const val bStatsId = 15823
     }
 
-    val config: IConfig = dev.mikchan.mcnp.chat.Creators.config.create(this)
-    val commandManager: ICommandManager = dev.mikchan.mcnp.chat.Creators.commandManager.create(this)
-    val formatter: IFormatter = dev.mikchan.mcnp.chat.Creators.formatter.create(this)
-    val userManager: IUserManager = dev.mikchan.mcnp.chat.Creators.userManager.create(this)
-    val eventManager: IEventManager = dev.mikchan.mcnp.chat.Creators.eventManager.create(this)
+    val config: IConfig = Creators.config.create(this)
+    val commandManager: ICommandManager = Creators.commandManager.create(this)
+    val formatter: IFormatter = Creators.formatter.create(this)
+    val userManager: IUserManager = Creators.userManager.create(this)
+    val eventManager: IEventManager = Creators.eventManager.create(this)
 
     override fun onEnable() {
         commandManager.enableAll()
