@@ -5,6 +5,7 @@ import dev.mikchan.mcnp.chat.config.IConfig
 import dev.mikchan.mcnp.chat.events.IEventManager
 import dev.mikchan.mcnp.chat.formatting.IFormatter
 import dev.mikchan.mcnp.chat.users.IUserManager
+import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -12,6 +13,10 @@ import org.bukkit.plugin.java.JavaPlugin
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class ChatPlugin : JavaPlugin() {
+    companion object {
+        private const val bStatsId = 15823
+    }
+
     val config: IConfig = dev.mikchan.mcnp.chat.Creators.config.create(this)
     val commandManager: ICommandManager = dev.mikchan.mcnp.chat.Creators.commandManager.create(this)
     val formatter: IFormatter = dev.mikchan.mcnp.chat.Creators.formatter.create(this)
@@ -21,6 +26,8 @@ class ChatPlugin : JavaPlugin() {
     override fun onEnable() {
         commandManager.enableAll()
         eventManager.register()
+
+        Metrics(this, bStatsId)
     }
 
     override fun onDisable() {

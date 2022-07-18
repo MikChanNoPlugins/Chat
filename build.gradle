@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.7.10'
     id 'org.jetbrains.dokka' version "1.7.10"
     id 'maven-publish'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
 group = 'dev.mikchan.mcnp'
@@ -53,6 +54,13 @@ dependencies {
 
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10'
     compileOnly 'dev.dejvokep:boosted-yaml-spigot:1.2'
+
+
+    implementation "org.bstats:bstats-bukkit:3.0.0"
+    shadow "org.bstats:bstats-bukkit:3.0.0"
+
+    implementation "org.bstats:bstats-bukkit:3.0.0"
+    shadow "org.bstats:bstats-base:3.0.0"
 }
 
 def targetJavaVersion = 8
@@ -66,6 +74,15 @@ java {
 
     withSourcesJar()
     withJavadocJar()
+}
+
+assemble.dependsOn(shadowJar)
+jar {
+    enabled = false
+    dependsOn(shadowJar {
+        //noinspection GrDeprecatedAPIUsage
+        classifier = null
+    })
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -103,4 +120,13 @@ javadocJar {
     archiveClassifier.set("javadoc")
     dependsOn("dokkaHtml")
     from("$buildDir/dokka")
+}
+
+shadowJar {
+    dependencies {
+        include(dependency('org.bstats:bstats-bukkit'))
+        include(dependency('org.bstats:bstats-base'))
+    }
+
+    relocate "org.bstats", "dev.mikchan.mcnp.chat.bstats"
 }
