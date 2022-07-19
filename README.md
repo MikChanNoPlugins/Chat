@@ -4,6 +4,6 @@
 # MikChanの Chat
 A minimalistic chat plugin
 
-# Stats
+## Stats
 
 [![bStats](https://bstats.org/signatures/bukkit/MikChanNoChat.svg)](https://bstats.org/plugin/bukkit/MikChanNoChat/15823)
