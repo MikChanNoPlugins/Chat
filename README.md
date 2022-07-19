@@ -17,7 +17,6 @@ The plugin adds support of 3 types of messages: Global, Local and Private.
 -   Local messages are only visible to players within the certain radius from the sender.
 -   Private messages are only visible to the specific player the sender specified.
 
-
 If needed, local messages can be disabled by setting
 ```yaml
 enableLocal: false
