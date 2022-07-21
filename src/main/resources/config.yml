@@ -30,10 +30,10 @@ privateTemplate: <:player_from: to :player_to:> :message:
 consoleTemplate: <CONSOLE to :player_to:> :message:
 
 # If PAPI is present, this field will be used to replace :player:
-playerTemplate: %player_name%
+playerTemplate: '%player_name%'
 
 # If PAPI is present, this field will be used to replace :player_from:
-fromTemplate: %player_name%
+fromTemplate: '%player_name%'
 
 # If PAPI is present, this field will be used to replace :player_to:
-toTemplate: %player_name%
+toTemplate: '%player_name%'
