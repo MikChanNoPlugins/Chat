@@ -27,8 +27,10 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
         }
 
         if (isGlobal && plugin.config.enableLocal) {
-            msg = msg.drop(plugin.config.globalPrefix.length)
+            msg = msg.drop(plugin.config.globalPrefix.length).trim()
         }
+
+        if (msg.isEmpty()) return
 
         val recipients = mutableSetOf<Player>()
         if (isGlobal) {
