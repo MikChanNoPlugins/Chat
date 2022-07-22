@@ -76,15 +76,6 @@ java {
     withJavadocJar()
 }
 
-assemble.dependsOn(shadowJar)
-jar {
-    enabled = false
-    dependsOn(shadowJar {
-        //noinspection GrDeprecatedAPIUsage
-        classifier = null
-    })
-}
-
 tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion
@@ -123,6 +114,8 @@ javadocJar {
 }
 
 shadowJar {
+    archiveClassifier.set(null)
+
     dependencies {
         include(dependency('org.bstats:bstats-bukkit'))
         include(dependency('org.bstats:bstats-base'))

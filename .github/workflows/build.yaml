@@ -12,26 +12,25 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          
+
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
-        
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Execute Gradle build
-        run: ./gradlew build
-        
+      - name: Execute Gradle Shaded Build
+        run: ./gradlew shadowJar
+
       - id: commit
         uses: pr-mpt/actions-commit-hash@v1
-        
+
       - uses: actions/upload-artifact@v3
         with:
           name: MikChanNoChat-${{ steps.commit.outputs.short }}.zip
           path: |
             build/libs/
             LICENSE.txt
-
