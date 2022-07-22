@@ -114,8 +114,6 @@ javadocJar {
 }
 
 shadowJar {
-    archiveClassifier.set(null)
-
     dependencies {
         include(dependency('org.bstats:bstats-bukkit'))
         include(dependency('org.bstats:bstats-base'))
