@@ -4,10 +4,11 @@ plugins {
     id 'org.jetbrains.dokka' version "1.7.10"
     id 'maven-publish'
     id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.dorongold.task-tree" version "2.0.1"
 }
 
 group = 'dev.mikchan.mcnp'
-version = '1.0.4'
+version = '1.0.3'
 
 repositories {
     mavenCentral()
@@ -116,8 +117,6 @@ publishing {
         gpr(MavenPublication) {
             groupId = group
             artifactId = 'chat'
-
-            from components.java
 
             artifact jar
             artifact javadocJar
