@@ -1,6 +1,7 @@
 [![Downloads](https://pluginbadges.glitch.me/api/v1/dl/Downloads-limegreen.svg?spigot=mikchan%25E3%2581%25AEchat.103501&github=MikChanNoPlugins%2FChat&style=flat)](https://www.spigotmc.org/resources/mikchan%E3%81%AEchat.103501/)
 [![Java CI](https://github.com/MikChanNoPlugins/Chat/actions/workflows/build.yaml/badge.svg)](https://github.com/MikChanNoPlugins/Chat/actions/workflows/build.yaml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f7bb532885f14bc28dd589b9ebec7427)](https://www.codacy.com/gh/MikChanNoPlugins/Chat/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MikChanNoPlugins/Chat&amp;utm_campaign=Badge_Grade)
+[![Lines of Code](https://tokei.rs/b1/github/MikChanNoPlugins/Chat?category=code)](https://github.com/MikChanNoPlugins/Chat)
 
 # MikChanの Chat
 A minimalistic chat plugin.
