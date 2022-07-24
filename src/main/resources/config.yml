@@ -15,19 +15,19 @@ globalPrefix: !
 # A template for local messages
 # :player: - the username of the player who sent the message
 # :message: - the message itself
-localTemplate: <:player:> :message:
+localTemplate: '<:player:> :message:'
 
 # A template for global messages
 # :player: - the username of the player who sent the message
 # :message: - the message itself
-globalTemplate: <:player:> :message:
+globalTemplate: '<:player:> :message:'
 
 # A template for a private message
 # :player_from: - the username of the player who sent the message
 # :player_to: - the username of the player who receives the message
 # :message: - the message itself
-privateTemplate: <:player_from: to :player_to:> :message:
-consoleTemplate: <CONSOLE to :player_to:> :message:
+privateTemplate: '<:player_from: to :player_to:> :message:'
+consoleTemplate: '<CONSOLE to :player_to:> :message:'
 
 # If PAPI is present, this field will be used to replace :player:
 playerTemplate: '%player_name%'
