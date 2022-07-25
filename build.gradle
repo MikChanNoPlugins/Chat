@@ -6,8 +6,20 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
+if (hasProperty('buildScan')) {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
+
+static def determineVersion(String defaultVersion) {
+    def envVersion = System.getenv("VERSION")
+    return envVersion == null ? defaultVersion : envVersion
+}
+
 group = 'dev.mikchan.mcnp'
-version = '1.0.4'
+version = determineVersion('1.0.4')
 
 repositories {
     mavenCentral()
@@ -18,8 +30,8 @@ repositories {
     }
 
     maven {
-        name 'placeholderapi'
-        url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+        name = 'placeholderapi'
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
     }
 }
 
