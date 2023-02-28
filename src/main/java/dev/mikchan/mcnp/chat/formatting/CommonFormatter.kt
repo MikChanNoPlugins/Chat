@@ -12,9 +12,14 @@ internal abstract class CommonFormatter(private val plugin: ChatPlugin) : IForma
         globalPlayer: () -> String?,
         localPlayer: () -> String?,
         spyPlayer: () -> String?,
+        preProcess: (s: String) -> String?,
+        postProcess: (s: String) -> String?,
         message: () -> String?
     ): String {
-        var res = ChatColor.translateAlternateColorCodes('&', template)
+        var res = template
+
+        res = preProcess(res) ?: res
+        res = ChatColor.translateAlternateColorCodes('&', res)
 
         if (res.contains(":player_from:")) {
             val fromPlayer = from() ?: ""
@@ -45,6 +50,8 @@ internal abstract class CommonFormatter(private val plugin: ChatPlugin) : IForma
             val defPlayer = spyPlayer() ?: ""
             res = res.replace(":spy_player:", defPlayer)
         }
+
+        res = postProcess(res) ?: res
 
         if (res.contains(":message:")) {
             val msg = message()

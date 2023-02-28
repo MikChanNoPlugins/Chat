@@ -13,6 +13,8 @@ internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatte
             { "%1\$s" },
             { "%1\$s" },
             { "%1\$s" },
+            { it.replace("%", "%%") },
+            { null },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -28,6 +30,8 @@ internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatte
             { to.displayName },
             { to.displayName },
             { to.displayName },
+            { it.replace("%", "%%") },
+            { null },
             {
                 ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -43,6 +47,8 @@ internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatte
             { "%1\$s" },
             { "%1\$s" },
             { "%1\$s" },
+            { it.replace("%", "%%") },
+            { null },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -58,6 +64,8 @@ internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatte
             { "%1\$s" },
             { "%1\$s" },
             { "%1\$s" },
+            { it.replace("%", "%%") },
+            { null },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -73,6 +81,8 @@ internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatte
             { "%1\$s" },
             { "%1\$s" },
             { "%1\$s" },
+            { it.replace("%", "%%") },
+            { null },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
