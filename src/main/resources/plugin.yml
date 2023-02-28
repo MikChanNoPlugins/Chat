@@ -42,6 +42,13 @@ commands:
     permission: mcn.chat.admin.*
 
 permissions:
+  mcn.chat.*:
+    default: true
+    children:
+      - mcn.chat.msg
+      - mcn.chat.reply
+      - mcn.chat.global
+      - mcn.chat.local
   mcn.chat.msg:
     default: true
   mcn.chat.reply:
