@@ -34,25 +34,12 @@ interface IConfig {
     var globalPrefix: String
 
     /**
-     * The player name template.
+     * The global message template.
      *
-     * This is the template which is used to replace `:player:` part in [localTemplate] and [globalTemplate].
+     * This is the template which is used for global messages.
+     * Any `:player:` will be replaced with [playerTemplate], and `:message:` with the message text.
      */
-    var playerTemplate: String
-
-    /**
-     * Sending player name template.
-     *
-     * This is the template which is used to replace `:player_from:` part in [privateTemplate].
-     */
-    var fromTemplate: String
-
-    /**
-     * Receiving player name template.
-     *
-     * This is the template which is used to replace `:player_to:` part in [privateTemplate] and [consoleTemplate].
-     */
-    var toTemplate: String
+    var globalTemplate: String
 
     /**
      * The local message template.
@@ -63,12 +50,12 @@ interface IConfig {
     var localTemplate: String
 
     /**
-     * The global message template.
+     * The spy message template.
      *
-     * This is the template which is used for global messages.
+     * This is the template which is used for spy local messages. If [enableLocal] is `false` the value is ignored.
      * Any `:player:` will be replaced with [playerTemplate], and `:message:` with the message text.
      */
-    var globalTemplate: String
+    var spyTemplate: String
 
     /**
      * The private message template.
@@ -85,4 +72,46 @@ interface IConfig {
      * Any `:player_to` will be replaced with [toTemplate], and `:message:` with the message text.
      */
     var consoleTemplate: String
+
+    /**
+     * The player name template.
+     *
+     * This is the template which is used to replace `:player:` part in [localTemplate] and [globalTemplate].
+     */
+    var playerTemplate: String
+
+    /**
+     * The player name template.
+     *
+     * This is the template which is used to replace `:global_player:` part in [globalTemplate].
+     */
+    var globalPlayerTemplate: String
+
+    /**
+     * The player name template.
+     *
+     * This is the template which is used to replace `:local_player:` part in [localTemplate] and [spyTemplate].
+     */
+    var localPlayerTemplate: String
+
+    /**
+     * The player name template.
+     *
+     * This is the template which is used to replace `:spy_player:` part in [spyTemplate].
+     */
+    var spyPlayerTemplate: String
+
+    /**
+     * Sending player name template.
+     *
+     * This is the template which is used to replace `:player_from:` part in [privateTemplate].
+     */
+    var fromTemplate: String
+
+    /**
+     * Receiving player name template.
+     *
+     * This is the template which is used to replace `:player_to:` part in [privateTemplate] and [consoleTemplate].
+     */
+    var toTemplate: String
 }

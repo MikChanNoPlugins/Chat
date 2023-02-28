@@ -1,5 +1,5 @@
 # This is an automatic property, do not change!
-configVersion: 1
+configVersion: 2
 
 # Local chat settings
 # If enabled, by default all messages sent by a player
@@ -10,17 +10,26 @@ localRadius: 100
 # If `enableLocal` is true, this prefix should be put
 # in front of messages user wants to send globally (e.g. "!Hello, everyone")
 # If `enableLocal` is false, this does nothing
-globalPrefix: !
-
-# A template for local messages
-# :player: - the username of the player who sent the message
-# :message: - the message itself
-localTemplate: '<:player:> :message:'
+globalPrefix: '!'
 
 # A template for global messages
 # :player: - the username of the player who sent the message
+# :global_player: - alternative username of the player who sent the message
 # :message: - the message itself
 globalTemplate: '<:player:> :message:'
+
+# A template for local messages
+# :player: - the username of the player who sent the message
+# :local_player: - alternative username of the player who sent the message
+# :message: - the message itself
+localTemplate: '<:player:> :message:'
+
+# A template for spy messages
+# :player: - the username of the player who sent the message
+# :local_player: - alternative username of the player who sent the message
+# :spy_player: - alternative username of the player who sent the message
+# :message: - the message itself
+spyTemplate: '<:player:> :message:'
 
 # A template for a private message
 # :player_from: - the username of the player who sent the message
@@ -31,6 +40,15 @@ consoleTemplate: '<CONSOLE to :player_to:> :message:'
 
 # If PAPI is present, this field will be used to replace :player:
 playerTemplate: '%player_name%'
+
+# If PAPI is present, this field will be used to replace :global_player:
+globalPlayerTemplate: '%player_name%'
+
+# If PAPI is present, this field will be used to replace :local_player:
+localPlayerTemplate: '%player_name%'
+
+# If PAPI is present, this field will be used to replace :spy_player:
+spyPlayerTemplate: '%player_name%'
 
 # If PAPI is present, this field will be used to replace :player_from:
 fromTemplate: '%player_name%'
