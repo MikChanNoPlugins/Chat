@@ -70,5 +70,5 @@ permissions:
 
 
 libraries:
-  - org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10
-  - dev.dejvokep:boosted-yaml-spigot:1.2
+  - org.jetbrains.kotlin:kotlin-stdlib:1.8.10
+  - dev.dejvokep:boosted-yaml-spigot:1.3
