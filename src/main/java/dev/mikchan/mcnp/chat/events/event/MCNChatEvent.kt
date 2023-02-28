@@ -37,8 +37,18 @@ class MCNChatEvent(
     /**
      * Fully formatted message.
      */
-    val formattedMessage: String
-) : Event(), Cancellable {
+    val formattedMessage: String,
+
+    /**
+     * Is the message meant to be previewed in the secure chat thing (meh)
+     */
+    val isPreview: Boolean,
+
+    /**
+     * Is the message async
+     */
+    isAsync: Boolean
+) : Event(isAsync), Cancellable {
     private var cancelled = false
 
     override fun isCancelled(): Boolean {

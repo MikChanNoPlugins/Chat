@@ -8,29 +8,27 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
+import org.bukkit.event.player.AsyncPlayerChatPreviewEvent
 import kotlin.streams.asSequence
 
 internal class ChatListener(private val plugin: ChatPlugin) : Listener {
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    fun onAsyncMessage(event: AsyncPlayerChatEvent) {
-        event.isCancelled = true
-
+    private fun handleChatEvent(event: AsyncPlayerChatEvent, isPreview: Boolean): Boolean {
         var msg = event.message.trim()
         val isGlobal = !plugin.config.enableLocal || msg.startsWith(plugin.config.globalPrefix)
 
-        if (!event.player.hasPermission("mcn.chat.global") && isGlobal) {
+        if ((!event.player.hasPermission("mcn.chat.global") && isGlobal) || (!event.player.hasPermission("mcn.chat.local") && !isGlobal)) {
             plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
                 event.player.sendMessage(ChatColor.RED.toString() + "You have no permission to do that!")
             }
 
-            return
+            return false
         }
 
         if (isGlobal && plugin.config.enableLocal) {
             msg = msg.drop(plugin.config.globalPrefix.length).trim()
         }
 
-        if (msg.isEmpty()) return
+        if (msg.isEmpty()) return false
 
         val recipients = mutableSetOf<Player>()
         if (isGlobal) {
@@ -43,14 +41,33 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
                 .asSequence())
         }
 
-        plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-            plugin.server.pluginManager.callEvent(
-                MCNChatEvent(
-                    event.player, recipients, isGlobal, msg, if (isGlobal) plugin.formatter.formatGlobal(
-                        event.player, msg
-                    ) else plugin.formatter.formatLocal(event.player, msg)
-                )
-            )
+        val mcncEvent = MCNChatEvent(
+            event.player, recipients, isGlobal, msg, if (isGlobal) plugin.formatter.formatGlobal(
+                event.player, msg
+            ) else plugin.formatter.formatLocal(event.player, msg), isPreview, event.isAsynchronous
+        )
+
+        plugin.server.pluginManager.callEvent(mcncEvent)
+
+        if (mcncEvent.isCancelled) {
+            return false
         }
+
+        event.message = msg
+        event.format = mcncEvent.formattedMessage
+        event.recipients.clear()
+        event.recipients.addAll(mcncEvent.recipients)
+
+        return true
+    }
+
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    fun onAsyncMessage(event: AsyncPlayerChatEvent) {
+        if (!handleChatEvent(event, false)) event.isCancelled = true
+    }
+
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    fun onAsyncPlayerChatPreview(event: AsyncPlayerChatPreviewEvent) {
+        if (!handleChatEvent(event, true)) event.isCancelled = true
     }
 }
