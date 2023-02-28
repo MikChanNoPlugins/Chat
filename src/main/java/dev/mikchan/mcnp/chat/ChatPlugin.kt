@@ -4,6 +4,7 @@ import dev.mikchan.mcnp.chat.commands.ICommandManager
 import dev.mikchan.mcnp.chat.config.IConfig
 import dev.mikchan.mcnp.chat.events.IEventManager
 import dev.mikchan.mcnp.chat.formatting.IFormatter
+import dev.mikchan.mcnp.chat.keys.IKeys
 import dev.mikchan.mcnp.chat.users.IUserManager
 import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.java.JavaPlugin
@@ -22,6 +23,7 @@ class ChatPlugin : JavaPlugin() {
     val formatter: IFormatter = Creators.formatter.create(this)
     val userManager: IUserManager = Creators.userManager.create(this)
     val eventManager: IEventManager = Creators.eventManager.create(this)
+    val keys: IKeys = Creators.keys.create(this)
 
     override fun onEnable() {
         commandManager.enableAll()

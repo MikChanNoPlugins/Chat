@@ -7,9 +7,12 @@ import org.bukkit.entity.Player
 internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatter(plugin) {
     override fun formatPrivate(from: Player, to: Player, message: String): String {
         return prepareTemplate(plugin.config.privateTemplate,
-            { from.displayName },
+            { "%1\$s" },
             { to.displayName },
-            { from.displayName },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -18,26 +21,62 @@ internal class DefaultFormatter(private val plugin: ChatPlugin) : CommonFormatte
     }
 
     override fun formatConsole(to: Player, message: String): String {
-        return prepareTemplate(plugin.config.consoleTemplate, { null }, { to.displayName }, { to.displayName }, {
-            ChatColor.translateAlternateColorCodes(
-                '&', message
-            )
-        })
+        return prepareTemplate(plugin.config.consoleTemplate,
+            { to.displayName },
+            { to.displayName },
+            { to.displayName },
+            { to.displayName },
+            { to.displayName },
+            { to.displayName },
+            {
+                ChatColor.translateAlternateColorCodes(
+                    '&', message
+                )
+            })
     }
 
     override fun formatGlobal(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.globalTemplate, { from.displayName }, { null }, { from.displayName }) {
-            if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
-                '&', message
-            ) else ChatColor.stripColor(message)
-        }
+        return prepareTemplate(plugin.config.globalTemplate,
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
     }
 
     override fun formatLocal(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.localTemplate, { from.displayName }, { null }, { from.displayName }, {
-            if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
-                '&', message
-            ) else ChatColor.stripColor(message)
-        })
+        return prepareTemplate(plugin.config.localTemplate,
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
+    }
+
+    override fun formatSpy(from: Player, message: String): String {
+        return prepareTemplate(plugin.config.spyTemplate,
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
     }
 }

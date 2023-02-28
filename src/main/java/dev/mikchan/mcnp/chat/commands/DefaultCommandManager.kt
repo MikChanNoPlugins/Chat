@@ -1,6 +1,7 @@
 package dev.mikchan.mcnp.chat.commands
 
 import dev.mikchan.mcnp.chat.ChatPlugin
+import dev.mikchan.mcnp.chat.commands.command.*
 import dev.mikchan.mcnp.chat.commands.command.ICommand
 import dev.mikchan.mcnp.chat.commands.command.MsgCommand
 import dev.mikchan.mcnp.chat.commands.command.ReloadCommand
@@ -12,7 +13,8 @@ internal class DefaultCommandManager(private val plugin: ChatPlugin) : ICommandM
     private val executors: Map<String, ICommand> = mapOf(
         "mcn_chat" to ReloadCommand(plugin),
         "msg" to MsgCommand(plugin, messageHistory),
-        "reply" to ReplyCommand(plugin, messageHistory)
+        "reply" to ReplyCommand(plugin, messageHistory),
+        "spy" to SpyCommand(plugin),
     )
 
     override fun enableAll() {

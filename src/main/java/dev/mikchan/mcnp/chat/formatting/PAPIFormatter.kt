@@ -8,8 +8,7 @@ import org.bukkit.entity.Player
 internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(plugin) {
     private fun prepareFromPlayer(player: Player): String {
         return ChatColor.translateAlternateColorCodes(
-            '&',
-            PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
+            '&', PlaceholderAPI.setPlaceholders(player, plugin.config.fromTemplate)
         )
     }
 
@@ -25,11 +24,32 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(p
         )
     }
 
+    private fun prepareGlobalPlayer(player: Player): String {
+        return ChatColor.translateAlternateColorCodes(
+            '&', PlaceholderAPI.setPlaceholders(player, plugin.config.globalPlayerTemplate)
+        )
+    }
+
+    private fun prepareLocalPlayer(player: Player): String {
+        return ChatColor.translateAlternateColorCodes(
+            '&', PlaceholderAPI.setPlaceholders(player, plugin.config.localPlayerTemplate)
+        )
+    }
+
+    private fun prepareSpyPlayer(player: Player): String {
+        return ChatColor.translateAlternateColorCodes(
+            '&', PlaceholderAPI.setPlaceholders(player, plugin.config.spyPlayerTemplate)
+        )
+    }
+
     override fun formatPrivate(from: Player, to: Player, message: String): String {
         return prepareTemplate(plugin.config.privateTemplate,
             { prepareFromPlayer(from) },
             { prepareToPlayer(to) },
-            { preparePlayer(to) },
+            { preparePlayer(from) },
+            { prepareGlobalPlayer(from) },
+            { prepareLocalPlayer(from) },
+            { prepareSpyPlayer(from) },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -39,9 +59,12 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(p
 
     override fun formatConsole(to: Player, message: String): String {
         return prepareTemplate(plugin.config.consoleTemplate,
-            { null },
+            { prepareFromPlayer(to) },
             { prepareToPlayer(to) },
             { preparePlayer(to) },
+            { prepareGlobalPlayer(to) },
+            { prepareLocalPlayer(to) },
+            { prepareSpyPlayer(to) },
             {
                 ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -52,8 +75,11 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(p
     override fun formatGlobal(from: Player, message: String): String {
         return prepareTemplate(plugin.config.globalTemplate,
             { prepareFromPlayer(from) },
-            { null },
+            { prepareToPlayer(from) },
             { preparePlayer(from) },
+            { prepareGlobalPlayer(from) },
+            { prepareLocalPlayer(from) },
+            { prepareSpyPlayer(from) },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -64,8 +90,26 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : CommonFormatter(p
     override fun formatLocal(from: Player, message: String): String {
         return prepareTemplate(plugin.config.localTemplate,
             { prepareFromPlayer(from) },
-            { null },
+            { prepareToPlayer(from) },
             { preparePlayer(from) },
+            { prepareGlobalPlayer(from) },
+            { prepareLocalPlayer(from) },
+            { prepareSpyPlayer(from) },
+            {
+                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
+    }
+
+    override fun formatSpy(from: Player, message: String): String {
+        return prepareTemplate(plugin.config.localTemplate,
+            { prepareFromPlayer(from) },
+            { prepareToPlayer(from) },
+            { preparePlayer(from) },
+            { prepareGlobalPlayer(from) },
+            { prepareLocalPlayer(from) },
+            { prepareSpyPlayer(from) },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message

@@ -36,6 +36,10 @@ commands:
     permission: mcn.chat.reply
     description: Reply to private message
 
+  spy:
+    permission: mcn.chat.spy
+    description: Enables spy feature
+
   mcn_chat:
     aliases:
       - chat
@@ -60,6 +64,9 @@ permissions:
 
   mcn.chat.colors:
     default: op
+
+  mcn.chat.spy:
+    default: true
 
   mcn.chat.admin.*:
     default: op

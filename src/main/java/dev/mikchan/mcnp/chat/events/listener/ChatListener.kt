@@ -12,13 +12,19 @@ import org.bukkit.event.player.AsyncPlayerChatPreviewEvent
 import kotlin.streams.asSequence
 
 internal class ChatListener(private val plugin: ChatPlugin) : Listener {
+    private fun checkPermissions(player: Player, isGlobal: Boolean): Boolean {
+        if (!player.hasPermission("mcn.chat.global") && isGlobal) return false
+        if (!player.hasPermission("mcn.chat.local") && !isGlobal) return false
+        return true
+    }
+
     private fun handleChatEvent(event: AsyncPlayerChatEvent, isPreview: Boolean): Boolean {
         var msg = event.message.trim()
         val isGlobal = !plugin.config.enableLocal || msg.startsWith(plugin.config.globalPrefix)
 
-        if ((!event.player.hasPermission("mcn.chat.global") && isGlobal) || (!event.player.hasPermission("mcn.chat.local") && !isGlobal)) {
+        if (!isPreview && !checkPermissions(event.player, isGlobal)) {
             plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-                event.player.sendMessage(ChatColor.RED.toString() + "You have no permission to do that!")
+                event.player.sendMessage("${ChatColor.RED}You have no permission to do that!")
             }
 
             return false
@@ -36,15 +42,15 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
         } else {
             val r = plugin.config.localRadius
 
-            recipients.addAll(plugin.server.onlinePlayers.stream()
-                .filter { player -> player.world == event.player.world && player.location.distance(event.player.location) < r }
-                .asSequence())
+            recipients.addAll(plugin.server.onlinePlayers.stream().filter { player ->
+                player.world == event.player.world && player.location.distance(event.player.location) < r
+            }.asSequence())
         }
 
         val mcncEvent = MCNChatEvent(
             event.player, recipients, isGlobal, msg, if (isGlobal) plugin.formatter.formatGlobal(
-                event.player, msg
-            ) else plugin.formatter.formatLocal(event.player, msg), isPreview, event.isAsynchronous
+                event.player, "%2\$s"
+            ) else plugin.formatter.formatLocal(event.player, "%2\$s"), isPreview, event.isAsynchronous
         )
 
         plugin.server.pluginManager.callEvent(mcncEvent)

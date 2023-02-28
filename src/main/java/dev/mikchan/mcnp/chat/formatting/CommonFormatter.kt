@@ -5,7 +5,14 @@ import org.bukkit.ChatColor
 
 internal abstract class CommonFormatter(private val plugin: ChatPlugin) : IFormatter {
     protected fun prepareTemplate(
-        template: String, from: () -> String?, to: () -> String?, player: () -> String?, message: () -> String?
+        template: String,
+        from: () -> String?,
+        to: () -> String?,
+        player: () -> String?,
+        globalPlayer: () -> String?,
+        localPlayer: () -> String?,
+        spyPlayer: () -> String?,
+        message: () -> String?
     ): String {
         var res = ChatColor.translateAlternateColorCodes('&', template)
 
@@ -22,6 +29,21 @@ internal abstract class CommonFormatter(private val plugin: ChatPlugin) : IForma
         if (res.contains(":player:")) {
             val defPlayer = player() ?: ""
             res = res.replace(":player:", defPlayer)
+        }
+
+        if (res.contains(":global_player:")) {
+            val defPlayer = globalPlayer() ?: ""
+            res = res.replace(":global_player:", defPlayer)
+        }
+
+        if (res.contains(":local_player:")) {
+            val defPlayer = localPlayer() ?: ""
+            res = res.replace(":local_player:", defPlayer)
+        }
+
+        if (res.contains(":spy_player:")) {
+            val defPlayer = spyPlayer() ?: ""
+            res = res.replace(":spy_player:", defPlayer)
         }
 
         if (res.contains(":message:")) {

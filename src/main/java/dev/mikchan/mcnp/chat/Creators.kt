@@ -8,6 +8,8 @@ import dev.mikchan.mcnp.chat.events.DefaultEventManagerCreator
 import dev.mikchan.mcnp.chat.events.IEventManagerCreator
 import dev.mikchan.mcnp.chat.formatting.DefaultFormatterCreator
 import dev.mikchan.mcnp.chat.formatting.IFormatterCreator
+import dev.mikchan.mcnp.chat.keys.DefaultKeysCreator
+import dev.mikchan.mcnp.chat.keys.IKeysCreator
 import dev.mikchan.mcnp.chat.users.DefaultUserManagerCreator
 import dev.mikchan.mcnp.chat.users.IUserManagerCreator
 
@@ -43,4 +45,9 @@ object Creators {
      * The event manager builder.
      */
     var eventManager: IEventManagerCreator = DefaultEventManagerCreator()
+
+    /**
+     * The keys' builder.
+     */
+    var keys: IKeysCreator = DefaultKeysCreator()
 }

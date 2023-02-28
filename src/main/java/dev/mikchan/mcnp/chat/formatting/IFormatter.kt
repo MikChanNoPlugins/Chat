@@ -46,4 +46,14 @@ interface IFormatter {
      * @return The formatted message.
      */
     fun formatLocal(from: Player, message: String): String
+
+    /**
+     * Formats a local message.
+     *
+     * @param from The player that sent the message.
+     * @param message The text of the message.
+     *
+     * @return The formatted message.
+     */
+    fun formatSpy(from: Player, message: String): String
 }
