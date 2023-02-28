@@ -22,6 +22,18 @@ internal class DefaultConfig : IConfig {
         get() = "%player_name%"
         set(_) {}
 
+    override var globalPlayerTemplate: String
+        get() = "%player_name%"
+        set(_) {}
+
+    override var localPlayerTemplate: String
+        get() = "%player_name%"
+        set(_) {}
+
+    override var spyPlayerTemplate: String
+        get() = "%player_name%"
+        set(_) {}
+
     override var fromTemplate: String
         get() = "%player_name%"
         set(_) {}
@@ -31,6 +43,10 @@ internal class DefaultConfig : IConfig {
         set(_) {}
 
     override var localTemplate: String
+        get() = "<:player:> :message:"
+        set(_) {}
+
+    override var spyTemplate: String
         get() = "<:player:> :message:"
         set(_) {}
 
