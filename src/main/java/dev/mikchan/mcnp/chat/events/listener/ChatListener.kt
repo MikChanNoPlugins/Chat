@@ -59,6 +59,19 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
             return false
         }
 
+        // TODO: Should find a better way, this sucks
+        if (plugin.notSpigot && !isPreview) {
+            plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
+                val fMsg = String.format(mcncEvent.formattedMessage, mcncEvent.sender.name, mcncEvent.message)
+                for (recipient in recipients) {
+                    recipient.sendMessage(mcncEvent.sender.uniqueId, fMsg)
+                }
+                plugin.server.consoleSender.sendMessage(fMsg)
+            }
+
+            return false
+        }
+
         event.message = msg
         event.format = mcncEvent.formattedMessage
         event.recipients.clear()
