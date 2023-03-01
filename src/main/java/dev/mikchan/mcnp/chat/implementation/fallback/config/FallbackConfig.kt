@@ -1,6 +1,6 @@
 package dev.mikchan.mcnp.chat.implementation.fallback.config
 
-import dev.mikchan.mcnp.chat.interfaces.config.IConfig
+import dev.mikchan.mcnp.chat.contract.config.IConfig
 
 internal class FallbackConfig : IConfig {
     override fun reload(): Boolean {

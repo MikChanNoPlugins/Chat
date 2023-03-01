@@ -2,7 +2,7 @@ package dev.mikchan.mcnp.chat.implementation.spigot.commands
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.implementation.spigot.commands.command.*
-import dev.mikchan.mcnp.chat.interfaces.commands.ICommandManager
+import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
 
 internal class SpigotCommandManager(private val plugin: ChatPlugin) : ICommandManager {
     private val messageHistory: MutableMap<String, String> = mutableMapOf()

@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.events
+package dev.mikchan.mcnp.chat.contract.events
 
 import org.bukkit.entity.Player
 import org.bukkit.event.Cancellable

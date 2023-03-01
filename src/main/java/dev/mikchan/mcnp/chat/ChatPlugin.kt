@@ -1,11 +1,11 @@
 package dev.mikchan.mcnp.chat
 
-import dev.mikchan.mcnp.chat.interfaces.commands.ICommandManager
-import dev.mikchan.mcnp.chat.interfaces.config.IConfig
-import dev.mikchan.mcnp.chat.interfaces.events.IEventManager
-import dev.mikchan.mcnp.chat.interfaces.formatting.IFormatter
-import dev.mikchan.mcnp.chat.interfaces.keys.IKeys
-import dev.mikchan.mcnp.chat.interfaces.users.IUserManager
+import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
+import dev.mikchan.mcnp.chat.contract.config.IConfig
+import dev.mikchan.mcnp.chat.contract.events.IEventManager
+import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
+import dev.mikchan.mcnp.chat.contract.keys.IKeys
+import dev.mikchan.mcnp.chat.contract.users.IUserManager
 import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.java.JavaPlugin
 

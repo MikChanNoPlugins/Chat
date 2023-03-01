@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.implementation.spigot.users
 
 import dev.mikchan.mcnp.chat.ChatPlugin
-import dev.mikchan.mcnp.chat.interfaces.users.IUserManager
+import dev.mikchan.mcnp.chat.contract.users.IUserManager
 import org.bukkit.entity.Player
 import java.util.*
 

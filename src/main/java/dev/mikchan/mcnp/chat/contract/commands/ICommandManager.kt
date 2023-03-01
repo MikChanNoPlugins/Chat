@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.commands
+package dev.mikchan.mcnp.chat.contract.commands
 
 /**
  * The command manager interface.

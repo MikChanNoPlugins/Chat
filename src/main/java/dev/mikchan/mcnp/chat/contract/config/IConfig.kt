@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.config
+package dev.mikchan.mcnp.chat.contract.config
 
 /**
  * The config interface.

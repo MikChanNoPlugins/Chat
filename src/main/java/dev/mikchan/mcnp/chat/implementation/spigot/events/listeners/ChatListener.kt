@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.implementation.spigot.events.listeners
 
 import dev.mikchan.mcnp.chat.ChatPlugin
-import dev.mikchan.mcnp.chat.interfaces.events.MCNChatEvent
+import dev.mikchan.mcnp.chat.contract.events.MCNChatEvent
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler

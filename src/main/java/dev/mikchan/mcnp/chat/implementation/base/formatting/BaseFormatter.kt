@@ -1,7 +1,7 @@
 package dev.mikchan.mcnp.chat.implementation.base.formatting
 
 import dev.mikchan.mcnp.chat.ChatPlugin
-import dev.mikchan.mcnp.chat.interfaces.formatting.IFormatter
+import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
 import org.bukkit.ChatColor
 
 internal abstract class BaseFormatter(private val plugin: ChatPlugin) : IFormatter {

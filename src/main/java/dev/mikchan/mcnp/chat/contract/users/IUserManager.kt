@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.users
+package dev.mikchan.mcnp.chat.contract.users
 
 import org.bukkit.entity.Player
 

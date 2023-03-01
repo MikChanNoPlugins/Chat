@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.formatting
+package dev.mikchan.mcnp.chat.contract.formatting
 
 import org.bukkit.entity.Player
 

@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.keys
+package dev.mikchan.mcnp.chat.contract.keys
 
 import org.bukkit.NamespacedKey
 import org.bukkit.persistence.PersistentDataType

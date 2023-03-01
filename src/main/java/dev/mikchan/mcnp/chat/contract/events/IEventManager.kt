@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.interfaces.events
+package dev.mikchan.mcnp.chat.contract.events
 
 /**
  * Event manager interface.
