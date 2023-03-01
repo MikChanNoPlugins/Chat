@@ -28,11 +28,8 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
         if (!event.player.hasPermission("mcn.chat.local") && !isPreview) throw NoPermissionException()
 
         val localRadius = plugin.config.localRadius
-        val recipients = plugin.server.onlinePlayers
-            .toList()
-            .filter { player -> player.world == event.player.world }
-            .filter { player -> player.location.distance(event.player.location) < localRadius }
-            .toSet()
+        val recipients = plugin.server.onlinePlayers.toList().filter { player -> player.world == event.player.world }
+            .filter { player -> player.location.distance(event.player.location) < localRadius }.toSet()
 
         val formattedMessage = plugin.formatter.formatLocal(event.player, "%2\$s")
 
@@ -58,12 +55,26 @@ internal class ChatListener(private val plugin: ChatPlugin) : Listener {
                 return false
             }
 
-            event.message = mcncEvent.message
-            event.format = mcncEvent.formattedMessage
-            event.recipients.clear()
-            event.recipients.addAll(mcncEvent.recipients)
+            if (plugin.config.substituteEvents) {
+                if (!isPreview) {
+                    plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
+                        val fMsg = String.format(mcncEvent.formattedMessage, mcncEvent.sender, mcncEvent.message)
+                        plugin.server.consoleSender.sendMessage(fMsg)
+                        for (recipient in mcncEvent.recipients) {
+                            recipient.sendMessage(mcncEvent.sender.uniqueId, fMsg)
+                        }
+                    }
+                }
 
-            return true
+                return false
+            } else {
+                event.message = mcncEvent.message
+                event.format = mcncEvent.formattedMessage
+                event.recipients.clear()
+                event.recipients.addAll(mcncEvent.recipients)
+
+                return true
+            }
         } catch (ex: EmptyMessageException) {
             return false
         } catch (ex: NoPermissionException) {
