@@ -25,8 +25,10 @@ internal class MCNCListener(private val plugin: ChatPlugin) : Listener {
         if (event.isGlobal) return
 
         plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-            val spies = plugin.server.onlinePlayers.filter { player -> !event.recipients.contains(player) }
-                .filter { player -> checkSpy(player) }.toSet()
+            val spies = plugin.server.onlinePlayers
+                .filter { player -> !event.recipients.contains(player) }
+                .filter { player -> checkSpy(player) }
+                .toSet()
 
             if (spies.isEmpty()) return@scheduleSyncDelayedTask
 

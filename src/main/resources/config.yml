@@ -1,5 +1,5 @@
 # This is an automatic property, do not change!
-configVersion: 2
+configVersion: 3
 
 # Local chat settings
 # If enabled, by default all messages sent by a player
@@ -55,3 +55,6 @@ fromTemplate: '%player_name%'
 
 # If PAPI is present, this field will be used to replace :player_to:
 toTemplate: '%player_name%'
+
+# Cancel all AsyncPlayerChatEvent and rely solely on MCNChatEvent
+substituteEvents: false

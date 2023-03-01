@@ -122,4 +122,11 @@ internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfi
             config.set("toTemplate", value)
             config.save()
         }
+
+    override var substituteEvents: Boolean
+        get() = config.getBoolean("substituteEvents", false)
+        set(value) {
+            config.set("substituteEvents", value)
+            config.save()
+        }
 }

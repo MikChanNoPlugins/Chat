@@ -114,4 +114,9 @@ interface IConfig {
      * This is the template which is used to replace `:player_to:` part in [privateTemplate] and [consoleTemplate].
      */
     var toTemplate: String
+
+    /**
+     * Cancel all [org.bukkit.event.player.AsyncPlayerChatEvent] and rely solely on [dev.mikchan.mcnp.chat.contract.events.MCNChatEvent]
+     */
+    var substituteEvents: Boolean
 }
