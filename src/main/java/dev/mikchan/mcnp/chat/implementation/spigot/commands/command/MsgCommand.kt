@@ -10,7 +10,7 @@ internal class MsgCommand(private val plugin: ChatPlugin, private val history: M
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (args.isEmpty()) {
             sender.sendMessage(
-                ChatColor.RED.toString() + "Invalid usage of the command $label. Please try again."
+                "${ChatColor.DARK_RED}Invalid usage of the command $label. Please try again."
             )
 
             return false
@@ -19,7 +19,7 @@ internal class MsgCommand(private val plugin: ChatPlugin, private val history: M
         val user = plugin.userManager.findByUsername(args[0])
         if (user == null) {
             sender.sendMessage(
-                ChatColor.RED.toString() + "Player ${args[0]} is not found. Please try again."
+                "${ChatColor.DARK_RED}Player ${args[0]} is not found. Please try again."
             )
 
             return false

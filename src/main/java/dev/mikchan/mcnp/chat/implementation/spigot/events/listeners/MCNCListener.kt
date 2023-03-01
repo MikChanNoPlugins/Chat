@@ -18,8 +18,8 @@ internal class MCNCListener(private val plugin: ChatPlugin) : Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-    fun onMCNCEvent(event: MCNChatEvent) {
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    fun onMCNCSpyEvent(event: MCNChatEvent) {
         if (event.isCancelled) return
         if (event.isPreview) return
         if (event.isGlobal) return
