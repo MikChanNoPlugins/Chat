@@ -25,6 +25,13 @@ internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfi
         return config.reload()
     }
 
+    override var enableLog: Boolean
+        get() = config.getBoolean("enableLog", false)
+        set(value) {
+            config.set("enableLog", value)
+            config.save()
+        }
+
     override var enableLocal: Boolean
         get() = config.getBoolean("enableLocal", false)
         set(value) {
