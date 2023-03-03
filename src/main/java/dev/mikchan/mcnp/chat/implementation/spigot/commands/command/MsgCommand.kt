@@ -38,8 +38,10 @@ internal class MsgCommand(private val plugin: ChatPlugin, private val history: M
 
         if (sender is Player) {
             user.sendMessage(sender.uniqueId, formattedMessage)
+            plugin.chatLogger.logPrivate(sender, user, message)
         } else {
             sender.sendMessage(formattedMessage)
+            plugin.chatLogger.logConsole(user, true, message)
         }
 
         if (user != sender) {

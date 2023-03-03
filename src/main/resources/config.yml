@@ -1,5 +1,8 @@
 # This is an automatic property, do not change!
-configVersion: 3
+configVersion: 4
+
+# Should enable logging messages?
+enableLog: false
 
 # Local chat settings
 # If enabled, by default all messages sent by a player

@@ -7,6 +7,10 @@ internal class FallbackConfig : IConfig {
         return true
     }
 
+    override var enableLog: Boolean
+        get() = false
+        set(_) {}
+
     override var enableLocal: Boolean
         get() = false
         set(_) {}
