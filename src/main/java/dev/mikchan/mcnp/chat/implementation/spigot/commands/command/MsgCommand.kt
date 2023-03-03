@@ -40,7 +40,7 @@ internal class MsgCommand(private val plugin: ChatPlugin, private val history: M
             user.sendMessage(sender.uniqueId, formattedMessage)
             plugin.chatLogger.logPrivate(sender, user, message)
         } else {
-            sender.sendMessage(formattedMessage)
+            user.sendMessage(formattedMessage)
             plugin.chatLogger.logConsole(user, true, message)
         }
 
