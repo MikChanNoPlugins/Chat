@@ -1,0 +1,14 @@
+name: MikChanNoChat
+version: '${version}'
+
+authors: [ 'George Endo (MikChan / wtlgo)' ]
+description: A minimalistic chat plugin
+website: https://github.com/MikChanNoPlugins
+
+prefix: MCnChat
+main: dev.mikchan.mcnp.chat.BungeeChatPlugin
+api-version: 1.16
+
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:1.8.10
+  - dev.dejvokep:boosted-yaml-spigot:1.3
