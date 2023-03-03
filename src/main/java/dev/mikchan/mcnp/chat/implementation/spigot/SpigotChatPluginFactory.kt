@@ -21,7 +21,7 @@ import dev.mikchan.mcnp.chat.implementation.spigot.users.SpigotUserManager
 import me.clip.placeholderapi.PlaceholderAPIPlugin
 import java.io.File
 
-internal class SpigotChatPluginFactory(private val plugin: ChatPlugin) : IChatPluginFactory {
+internal open class SpigotChatPluginFactory(private val plugin: ChatPlugin) : IChatPluginFactory {
     override fun createConfig(): IConfig {
         val resource = plugin.getResource("config.yml")
 
