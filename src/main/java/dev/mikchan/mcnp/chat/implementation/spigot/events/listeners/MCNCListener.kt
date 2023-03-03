@@ -38,4 +38,17 @@ internal class MCNCListener(private val plugin: ChatPlugin) : Listener {
             }
         }
     }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    fun onLogEvent(event: MCNChatEvent) {
+        if(event.isCancelled) return
+        if(event.isPreview) return
+
+        if(event.isGlobal) {
+            plugin.chatLogger.logGlobal(event.sender, event.message)
+        }
+        else {
+            plugin.chatLogger.logLocal(event.sender, event.message)
+        }
+    }
 }

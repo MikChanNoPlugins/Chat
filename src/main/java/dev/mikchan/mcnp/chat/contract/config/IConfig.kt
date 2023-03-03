@@ -12,6 +12,11 @@ interface IConfig {
     fun reload(): Boolean
 
     /**
+     * Is logging enabled.
+     */
+    var enableLog: Boolean
+
+    /**
      * Is local chat enabled.
      *
      * If enabled and the message the player sent does not start with [globalPrefix], this message will only be visible by players within [localRadius].
