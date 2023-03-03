@@ -3,7 +3,7 @@ package dev.mikchan.mcnp.chat.implementation.pre19spigot.events
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.events.IEventManager
 import dev.mikchan.mcnp.chat.implementation.pre19spigot.events.listeners.Pre19SpigotChatListener
-import dev.mikchan.mcnp.chat.implementation.spigot.events.listeners.MCNCListener
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.events.listeners.MCNCListener
 import org.bukkit.event.HandlerList
 import org.bukkit.event.Listener
 

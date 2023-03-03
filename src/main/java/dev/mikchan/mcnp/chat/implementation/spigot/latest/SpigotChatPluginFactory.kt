@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot
+package dev.mikchan.mcnp.chat.implementation.spigot.latest
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.IChatPluginFactory
@@ -11,13 +11,13 @@ import dev.mikchan.mcnp.chat.contract.log.IChatLogger
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
 import dev.mikchan.mcnp.chat.implementation.fallback.config.FallbackConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.formatting.FallbackFormatter
-import dev.mikchan.mcnp.chat.implementation.spigot.commands.SpigotCommandManager
-import dev.mikchan.mcnp.chat.implementation.spigot.config.BoostedYamlConfig
-import dev.mikchan.mcnp.chat.implementation.spigot.events.SpigotEventManager
-import dev.mikchan.mcnp.chat.implementation.spigot.formatting.PAPIFormatter
-import dev.mikchan.mcnp.chat.implementation.spigot.keys.SpigotKeys
-import dev.mikchan.mcnp.chat.implementation.spigot.log.FileChatLogger
-import dev.mikchan.mcnp.chat.implementation.spigot.users.SpigotUserManager
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.SpigotCommandManager
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.config.BoostedYamlConfig
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.events.SpigotEventManager
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.formatting.PAPIFormatter
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.keys.SpigotKeys
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.log.FileChatLogger
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.users.SpigotUserManager
 import me.clip.placeholderapi.PlaceholderAPIPlugin
 import java.io.File
 

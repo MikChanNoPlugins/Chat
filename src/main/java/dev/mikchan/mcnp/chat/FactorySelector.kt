@@ -2,7 +2,7 @@ package dev.mikchan.mcnp.chat
 
 import dev.mikchan.mcnp.chat.contract.IChatPluginFactory
 import dev.mikchan.mcnp.chat.implementation.pre19spigot.Pre19SpigotChatPluginFactory
-import dev.mikchan.mcnp.chat.implementation.spigot.SpigotChatPluginFactory
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.SpigotChatPluginFactory
 
 
 internal object FactorySelector {

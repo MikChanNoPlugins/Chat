@@ -1,9 +1,9 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.events
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.events
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.events.IEventManager
-import dev.mikchan.mcnp.chat.implementation.spigot.events.listeners.ChatListener
-import dev.mikchan.mcnp.chat.implementation.spigot.events.listeners.MCNCListener
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.events.listeners.ChatListener
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.events.listeners.MCNCListener
 import org.bukkit.event.HandlerList
 import org.bukkit.event.Listener
 

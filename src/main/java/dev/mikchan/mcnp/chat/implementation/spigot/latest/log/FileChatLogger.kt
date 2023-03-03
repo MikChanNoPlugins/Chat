@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.log
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.log
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.log.IChatLogger

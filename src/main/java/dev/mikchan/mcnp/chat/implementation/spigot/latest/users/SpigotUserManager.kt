@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.users
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.users
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.users.IUserManager

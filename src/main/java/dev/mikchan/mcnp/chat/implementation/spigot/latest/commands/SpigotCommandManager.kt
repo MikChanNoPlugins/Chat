@@ -1,8 +1,12 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.commands
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.commands
 
 import dev.mikchan.mcnp.chat.ChatPlugin
-import dev.mikchan.mcnp.chat.implementation.spigot.commands.command.*
 import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command.*
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command.ICommand
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command.MsgCommand
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command.ReloadCommand
+import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command.ReplyCommand
 
 internal class SpigotCommandManager(private val plugin: ChatPlugin) : ICommandManager {
     private val messageHistory: MutableMap<String, String> = mutableMapOf()

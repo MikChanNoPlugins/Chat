@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.keys
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.keys
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.keys.IKeys

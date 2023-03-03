@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.commands.command
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import net.md_5.bungee.api.ChatColor

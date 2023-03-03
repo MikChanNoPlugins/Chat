@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.events.listeners
+package dev.mikchan.mcnp.chat.implementation.spigot.latest.events.listeners
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.events.MCNChatEvent
