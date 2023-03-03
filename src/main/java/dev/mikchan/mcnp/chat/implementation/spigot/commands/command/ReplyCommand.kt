@@ -44,7 +44,6 @@ internal class ReplyCommand(private val plugin: ChatPlugin, private val history:
             sender.sendMessage(recipient.uniqueId, formattedMessage)
         } else {
             sender.sendMessage(formattedMessage)
-
         }
 
         if (recipient != sender) {
@@ -53,6 +52,14 @@ internal class ReplyCommand(private val plugin: ChatPlugin, private val history:
             } else {
                 recipient.sendMessage(formattedMessage)
             }
+        }
+
+        if (sender is Player && recipient is Player) {
+            plugin.chatLogger.logPrivate(sender, recipient, msg)
+        } else if (sender is Player && recipient !is Player) {
+            plugin.chatLogger.logConsole(sender, false, msg)
+        } else if (recipient is Player) {
+            plugin.chatLogger.logConsole(recipient, true, msg)
         }
 
         if (recipientUUID != null) {
