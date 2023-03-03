@@ -5,6 +5,7 @@ import dev.mikchan.mcnp.chat.contract.config.IConfig
 import dev.mikchan.mcnp.chat.contract.events.IEventManager
 import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
 import dev.mikchan.mcnp.chat.contract.keys.IKeys
+import dev.mikchan.mcnp.chat.contract.log.IChatLogger
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
 
 /**
@@ -17,4 +18,6 @@ interface IChatPluginFactory {
     fun createFormatter(): IFormatter
     fun createKeys(): IKeys
     fun createUserManager(): IUserManager
+
+    fun createChatLogger(): IChatLogger
 }

@@ -1,6 +1,14 @@
 package dev.mikchan.mcnp.chat.implementation.spigot
 
 import dev.mikchan.mcnp.chat.ChatPlugin
+import dev.mikchan.mcnp.chat.contract.IChatPluginFactory
+import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
+import dev.mikchan.mcnp.chat.contract.config.IConfig
+import dev.mikchan.mcnp.chat.contract.events.IEventManager
+import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
+import dev.mikchan.mcnp.chat.contract.keys.IKeys
+import dev.mikchan.mcnp.chat.contract.log.IChatLogger
+import dev.mikchan.mcnp.chat.contract.users.IUserManager
 import dev.mikchan.mcnp.chat.implementation.fallback.config.FallbackConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.formatting.FallbackFormatter
 import dev.mikchan.mcnp.chat.implementation.spigot.commands.SpigotCommandManager
@@ -8,14 +16,8 @@ import dev.mikchan.mcnp.chat.implementation.spigot.config.BoostedYamlConfig
 import dev.mikchan.mcnp.chat.implementation.spigot.events.SpigotEventManager
 import dev.mikchan.mcnp.chat.implementation.spigot.formatting.PAPIFormatter
 import dev.mikchan.mcnp.chat.implementation.spigot.keys.SpigotKeys
+import dev.mikchan.mcnp.chat.implementation.spigot.log.FileChatLogger
 import dev.mikchan.mcnp.chat.implementation.spigot.users.SpigotUserManager
-import dev.mikchan.mcnp.chat.contract.IChatPluginFactory
-import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
-import dev.mikchan.mcnp.chat.contract.config.IConfig
-import dev.mikchan.mcnp.chat.contract.events.IEventManager
-import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
-import dev.mikchan.mcnp.chat.contract.keys.IKeys
-import dev.mikchan.mcnp.chat.contract.users.IUserManager
 import me.clip.placeholderapi.PlaceholderAPIPlugin
 import java.io.File
 
@@ -56,5 +58,9 @@ internal class SpigotChatPluginFactory(private val plugin: ChatPlugin) : IChatPl
 
     override fun createUserManager(): IUserManager {
         return SpigotUserManager(plugin)
+    }
+
+    override fun createChatLogger(): IChatLogger {
+        return FileChatLogger(plugin)
     }
 }
