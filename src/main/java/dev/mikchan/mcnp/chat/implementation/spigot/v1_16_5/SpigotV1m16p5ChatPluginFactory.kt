@@ -2,6 +2,7 @@ package dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.IChatPluginFactory
+import dev.mikchan.mcnp.chat.contract.broadcast.IBroadcaster
 import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
 import dev.mikchan.mcnp.chat.contract.config.IConfig
 import dev.mikchan.mcnp.chat.contract.events.IEventManager
@@ -13,6 +14,7 @@ import dev.mikchan.mcnp.chat.implementation.boosted.config.BoostedYamlConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.config.FallbackConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.formatting.FallbackFormatter
 import dev.mikchan.mcnp.chat.implementation.file.log.FileChatLogger
+import dev.mikchan.mcnp.chat.implementation.nil.broadcaster.NullBroadcaster
 import dev.mikchan.mcnp.chat.implementation.papi.formatting.PAPIFormatter
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.commands.SpigotV1m16p5CommandManager
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.SpigotV1m16p5EventManager
@@ -62,5 +64,9 @@ internal open class SpigotV1m16p5ChatPluginFactory(private val plugin: ChatPlugi
 
     override fun createChatLogger(): IChatLogger {
         return FileChatLogger(plugin)
+    }
+
+    override fun createBroadcaster(): IBroadcaster {
+        return NullBroadcaster()
     }
 }

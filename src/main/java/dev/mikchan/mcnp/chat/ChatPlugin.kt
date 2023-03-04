@@ -1,5 +1,6 @@
 package dev.mikchan.mcnp.chat
 
+import dev.mikchan.mcnp.chat.contract.broadcast.IBroadcaster
 import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
 import dev.mikchan.mcnp.chat.contract.config.IConfig
 import dev.mikchan.mcnp.chat.contract.events.IEventManager
@@ -28,10 +29,10 @@ class ChatPlugin : JavaPlugin() {
     val eventManager: IEventManager by lazy { factory.createEventManager() }
     val keys: IKeys by lazy { factory.createKeys() }
     val chatLogger: IChatLogger by lazy { factory.createChatLogger() }
+    val broadcaster: IBroadcaster by lazy { factory.createBroadcaster() }
 
-    val isBungeeCord: Boolean by lazy {
-        server.spigot().config.getConfigurationSection("settings")?.getBoolean("settings.bungeecord") ?: false
-    }
+    val isBungeeCord: Boolean
+        get() = server.spigot().config.getConfigurationSection("settings")?.getBoolean("settings.bungeecord") ?: false
 
     override fun onEnable() {
         commandManager.enableAll()

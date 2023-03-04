@@ -1,5 +1,6 @@
 package dev.mikchan.mcnp.chat.contract
 
+import dev.mikchan.mcnp.chat.contract.broadcast.IBroadcaster
 import dev.mikchan.mcnp.chat.contract.commands.ICommandManager
 import dev.mikchan.mcnp.chat.contract.config.IConfig
 import dev.mikchan.mcnp.chat.contract.events.IEventManager
@@ -60,4 +61,11 @@ interface IChatPluginFactory {
      * @return A new chat logger
      */
     fun createChatLogger(): IChatLogger
+
+    /**
+     * Creates a broadcaster
+     *
+     * @return A new broadcaster
+     */
+    fun createBroadcaster(): IBroadcaster
 }
