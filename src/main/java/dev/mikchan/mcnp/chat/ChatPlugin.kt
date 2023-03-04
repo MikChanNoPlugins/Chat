@@ -29,6 +29,10 @@ class ChatPlugin : JavaPlugin() {
     val keys: IKeys by lazy { factory.createKeys() }
     val chatLogger: IChatLogger by lazy { factory.createChatLogger() }
 
+    val isBungeeCord: Boolean by lazy {
+        server.spigot().config.getConfigurationSection("settings")?.getBoolean("settings.bungeecord") ?: false
+    }
+
     override fun onEnable() {
         commandManager.enableAll()
         eventManager.register()
