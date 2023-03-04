@@ -7,11 +7,7 @@ import net.md_5.bungee.api.plugin.Plugin
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class BungeeChatPlugin : Plugin() {
-    override fun onEnable() {
-        logger.info("Yeah!!")
-    }
+    override fun onEnable() {}
 
-    override fun onDisable() {
-        logger.info("Oh no!")
-    }
+    override fun onDisable() {}
 }
