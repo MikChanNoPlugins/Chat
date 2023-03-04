@@ -7,7 +7,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class SpyCommand(private val plugin: ChatPlugin) : ICommand {
+internal class SpyCommand(private val plugin: ChatPlugin) : ICommand {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val player = sender as? Player
 
