@@ -16,6 +16,7 @@ import dev.mikchan.mcnp.chat.implementation.fallback.formatting.FallbackFormatte
 import dev.mikchan.mcnp.chat.implementation.file.log.FileChatLogger
 import dev.mikchan.mcnp.chat.implementation.nil.broadcaster.NullBroadcaster
 import dev.mikchan.mcnp.chat.implementation.papi.formatting.PAPIFormatter
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.broadcaster.SpigotV1m16p5Broadcaster
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.commands.SpigotV1m16p5CommandManager
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.SpigotV1m16p5EventManager
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.keys.SpigotV1m16p5Keys
@@ -67,6 +68,10 @@ internal open class SpigotV1m16p5ChatPluginFactory(private val plugin: ChatPlugi
     }
 
     override fun createBroadcaster(): IBroadcaster {
-        return NullBroadcaster()
+        return if (plugin.isBungeeCord) {
+            SpigotV1m16p5Broadcaster(plugin)
+        } else {
+            NullBroadcaster()
+        }
     }
 }

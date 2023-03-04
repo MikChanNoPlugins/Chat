@@ -37,6 +37,7 @@ class ChatPlugin : JavaPlugin() {
     override fun onEnable() {
         commandManager.enableAll()
         eventManager.register()
+        broadcaster.enable()
 
         Metrics(this, bStatsId)
     }
@@ -44,5 +45,6 @@ class ChatPlugin : JavaPlugin() {
     override fun onDisable() {
         commandManager.disableAll()
         eventManager.unregister()
+        broadcaster.disable()
     }
 }
