@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.latest.config
+package dev.mikchan.mcnp.chat.implementation.boosted.config
 
 import dev.dejvokep.boostedyaml.YamlDocument
 import dev.dejvokep.boostedyaml.dvs.versioning.BasicVersioning

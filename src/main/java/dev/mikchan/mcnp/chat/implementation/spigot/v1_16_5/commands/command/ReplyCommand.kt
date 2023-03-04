@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.command
+package dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.commands.command
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.implementation.base.commands.ICommand

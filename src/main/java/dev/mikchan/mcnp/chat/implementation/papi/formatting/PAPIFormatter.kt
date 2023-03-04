@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.latest.formatting
+package dev.mikchan.mcnp.chat.implementation.papi.formatting
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.implementation.base.formatting.BaseFormatter

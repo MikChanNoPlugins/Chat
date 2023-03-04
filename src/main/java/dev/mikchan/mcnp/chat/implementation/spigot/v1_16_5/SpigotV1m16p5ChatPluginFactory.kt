@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.latest
+package dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.IChatPluginFactory
@@ -14,14 +14,14 @@ import dev.mikchan.mcnp.chat.implementation.fallback.config.FallbackConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.formatting.FallbackFormatter
 import dev.mikchan.mcnp.chat.implementation.file.log.FileChatLogger
 import dev.mikchan.mcnp.chat.implementation.papi.formatting.PAPIFormatter
-import dev.mikchan.mcnp.chat.implementation.spigot.latest.commands.SpigotCommandManager
-import dev.mikchan.mcnp.chat.implementation.spigot.latest.events.SpigotEventManager
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.commands.SpigotV1m16p5CommandManager
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.SpigotV1m16p5EventManager
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.keys.SpigotV1m16p5Keys
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.users.SpigotV1m16p5UserManager
 import me.clip.placeholderapi.PlaceholderAPIPlugin
 import java.io.File
 
-internal open class SpigotChatPluginFactory(private val plugin: ChatPlugin) : IChatPluginFactory {
+internal class SpigotV1m16p5ChatPluginFactory(private val plugin: ChatPlugin) : IChatPluginFactory {
     override fun createConfig(): IConfig {
         val resource = plugin.getResource("config.yml")
 
@@ -33,11 +33,11 @@ internal open class SpigotChatPluginFactory(private val plugin: ChatPlugin) : IC
     }
 
     override fun createCommandManager(): ICommandManager {
-        return SpigotCommandManager(plugin)
+        return SpigotV1m16p5CommandManager(plugin)
     }
 
     override fun createEventManager(): IEventManager {
-        return SpigotEventManager(plugin)
+        return SpigotV1m16p5EventManager(plugin)
     }
 
     override fun createFormatter(): IFormatter {

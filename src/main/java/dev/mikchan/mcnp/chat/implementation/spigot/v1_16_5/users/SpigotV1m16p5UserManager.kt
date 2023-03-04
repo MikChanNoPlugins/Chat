@@ -1,11 +1,11 @@
-package dev.mikchan.mcnp.chat.implementation.spigot.latest.users
+package dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.users
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
 import org.bukkit.entity.Player
 import java.util.*
 
-internal open class SpigotUserManager(private val plugin: ChatPlugin) : IUserManager {
+internal class SpigotV1m16p5UserManager(private val plugin: ChatPlugin) : IUserManager {
     override fun findSimilar(search: String, playerContext: Player?): List<String> {
         @Suppress("UnnecessaryVariable") val res =
             plugin.server.onlinePlayers.filter { player -> player.displayName.startsWith(search, true) }
