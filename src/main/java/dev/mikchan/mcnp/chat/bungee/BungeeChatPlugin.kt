@@ -1,4 +1,4 @@
-package dev.mikchan.mcnp.chat
+package dev.mikchan.mcnp.chat.bungee
 
 import net.md_5.bungee.api.plugin.Plugin
 

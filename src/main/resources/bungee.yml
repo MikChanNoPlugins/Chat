@@ -6,7 +6,7 @@ description: A minimalistic chat plugin
 website: https://github.com/MikChanNoPlugins
 
 prefix: MCnChat
-main: dev.mikchan.mcnp.chat.BungeeChatPlugin
+main: dev.mikchan.mcnp.chat.bungee.BungeeChatPlugin
 api-version: 1.16
 
 libraries:
