@@ -1,5 +1,5 @@
 # This is an automatic property, do not change!
-configVersion: 4
+configVersion: 5
 
 # Should enable logging messages?
 enableLog: false
@@ -40,6 +40,7 @@ spyTemplate: '<:player:> :message:'
 # :message: - the message itself
 privateTemplate: '<:player_from: to :player_to:> :message:'
 consoleTemplate: '<CONSOLE to :player_to:> :message:'
+fromConsoleTemplate: '<:player_from: to CONSOLE> :message:'
 
 # If PAPI is present, this field will be used to replace :player:
 playerTemplate: '%player_name%'

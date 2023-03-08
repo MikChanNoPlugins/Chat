@@ -88,6 +88,13 @@ internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfi
             config.save()
         }
 
+    override var fromConsoleTemplate: String
+        get() = config.getString("fromConsoleTemplate", "<:player_from: to CONSOLE> :message:")
+        set(value) {
+            config.set("fromConsoleTemplate", value)
+            config.save()
+        }
+
     override var playerTemplate: String
         get() = config.getString("playerTemplate", "%player_name%")
         set(value) {
