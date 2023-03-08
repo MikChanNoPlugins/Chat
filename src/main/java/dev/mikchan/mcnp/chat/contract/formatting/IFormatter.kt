@@ -18,7 +18,7 @@ interface IFormatter {
     fun formatPrivate(from: Player, to: Player, message: String): String
 
     /**
-     * Formats a private message sent from the console.
+     * Formats a private message sent from the console to player.
      *
      * @param to The player that receives the message.
      * @param message The text of the message.
@@ -26,6 +26,16 @@ interface IFormatter {
      * @return The formatted message.
      */
     fun formatConsole(to: Player, message: String): String
+
+    /**
+     * Formats a private message sent from the console to player.
+     *
+     * @param from The player that sends the message.
+     * @param message The text of the message.
+     *
+     * @return The formatted message.
+     */
+    fun formatToConsole(from: Player, message: String): String
 
     /**
      * Formats a global message.

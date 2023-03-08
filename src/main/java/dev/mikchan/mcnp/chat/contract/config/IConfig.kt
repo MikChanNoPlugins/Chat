@@ -71,12 +71,20 @@ interface IConfig {
     var privateTemplate: String
 
     /**
-     * The console private message template.
+     * The console to player private message template.
      *
      * This is the template which is used for private messages that were sent from the console.
      * Any `:player_to` will be replaced with [toTemplate], and `:message:` with the message text.
      */
     var consoleTemplate: String
+
+    /**
+     * The player to console private message template.
+     *
+     * This is the template which is used for private messages that were sent from the console.
+     * Any `:player_from` will be replaced with [fromTemplate], and `:message:` with the message text.
+     */
+    var fromConsoleTemplate: String
 
     /**
      * The player name template.
