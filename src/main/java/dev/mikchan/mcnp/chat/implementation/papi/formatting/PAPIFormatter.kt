@@ -18,22 +18,25 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
         alwaysTranslateColors: Boolean = false,
         to: (() -> String?)? = null,
     ): String {
-        return prepareTemplate(template,
-            { prepareColors(player, plugin.config.fromTemplate) },
-            to ?: { prepareColors(player, plugin.config.toTemplate) },
-            { prepareColors(player, plugin.config.playerTemplate) },
-            { prepareColors(player, plugin.config.globalPlayerTemplate) },
-            { prepareColors(player, plugin.config.localPlayerTemplate) },
-            { prepareColors(player, plugin.config.spyPlayerTemplate) },
-            {
-                if (alwaysTranslateColors || player.hasPermission("mcn.chat.colors")) {
-                    ChatColor.translateAlternateColorCodes(
-                        '&', message
-                    )
-                } else {
-                    ChatColor.stripColor(message)
-                }
-            })
+        val colorize = { fieldTemplate: String -> { prepareColors(player, fieldTemplate) } }
+
+        return prepareTemplate(
+            template,
+            colorize(plugin.config.fromTemplate),
+            to ?: colorize(plugin.config.toTemplate),
+            colorize(plugin.config.playerTemplate),
+            colorize(plugin.config.globalPlayerTemplate),
+            colorize(plugin.config.localPlayerTemplate),
+            colorize(plugin.config.spyPlayerTemplate)
+        ) {
+            if (alwaysTranslateColors || player.hasPermission("mcn.chat.colors")) {
+                ChatColor.translateAlternateColorCodes(
+                    '&', message
+                )
+            } else {
+                ChatColor.stripColor(message)
+            }
+        }
     }
 
     override fun formatPrivate(from: Player, to: Player, message: String): String {
