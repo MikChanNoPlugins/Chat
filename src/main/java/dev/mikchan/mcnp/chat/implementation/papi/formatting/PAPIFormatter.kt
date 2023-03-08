@@ -43,6 +43,21 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
         )
     }
 
+    private fun formatOnePlayer(player: Player, template: String, message: String): String {
+        return prepareTemplate(template,
+            { prepareFromPlayer(player) },
+            { prepareToPlayer(player) },
+            { preparePlayer(player) },
+            { prepareGlobalPlayer(player) },
+            { prepareLocalPlayer(player) },
+            { prepareSpyPlayer(player) },
+            {
+                if (player.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
+                    '&', message
+                ) else ChatColor.stripColor(message)
+            })
+    }
+
     override fun formatPrivate(from: Player, to: Player, message: String): String {
         return prepareTemplate(plugin.config.privateTemplate,
             { prepareFromPlayer(from) },
@@ -74,62 +89,18 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
     }
 
     override fun formatToConsole(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.consoleTemplate,
-            { prepareFromPlayer(from) },
-            { prepareToPlayer(from) },
-            { preparePlayer(from) },
-            { prepareGlobalPlayer(from) },
-            { prepareLocalPlayer(from) },
-            { prepareSpyPlayer(from) },
-            {
-                ChatColor.translateAlternateColorCodes(
-                    '&', message
-                )
-            })
+        return formatOnePlayer(from, plugin.config.consoleTemplate, message)
     }
 
     override fun formatGlobal(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.globalTemplate,
-            { prepareFromPlayer(from) },
-            { prepareToPlayer(from) },
-            { preparePlayer(from) },
-            { prepareGlobalPlayer(from) },
-            { prepareLocalPlayer(from) },
-            { prepareSpyPlayer(from) },
-            {
-                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
-                    '&', message
-                ) else ChatColor.stripColor(message)
-            })
+        return formatOnePlayer(from, plugin.config.globalTemplate, message)
     }
 
     override fun formatLocal(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.localTemplate,
-            { prepareFromPlayer(from) },
-            { prepareToPlayer(from) },
-            { preparePlayer(from) },
-            { prepareGlobalPlayer(from) },
-            { prepareLocalPlayer(from) },
-            { prepareSpyPlayer(from) },
-            {
-                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
-                    '&', message
-                ) else ChatColor.stripColor(message)
-            })
+        return formatOnePlayer(from, plugin.config.localTemplate, message)
     }
 
     override fun formatSpy(from: Player, message: String): String {
-        return prepareTemplate(plugin.config.spyTemplate,
-            { prepareFromPlayer(from) },
-            { prepareToPlayer(from) },
-            { preparePlayer(from) },
-            { prepareGlobalPlayer(from) },
-            { prepareLocalPlayer(from) },
-            { prepareSpyPlayer(from) },
-            {
-                if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
-                    '&', message
-                ) else ChatColor.stripColor(message)
-            })
+        return formatOnePlayer(from, plugin.config.spyTemplate, message)
     }
 }
