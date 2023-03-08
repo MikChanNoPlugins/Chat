@@ -36,8 +36,7 @@ internal class ReplyCommand(private val plugin: ChatPlugin, private val history:
         } else if (recipient is Player && sender !is Player) {
             plugin.formatter.formatConsole(recipient, msg)
         } else if (sender is Player) {
-            // TODO: Add formatFromConsole
-            plugin.formatter.formatGlobal(sender, msg)
+            plugin.formatter.formatToConsole(sender, msg)
         } else {
             return false
         }

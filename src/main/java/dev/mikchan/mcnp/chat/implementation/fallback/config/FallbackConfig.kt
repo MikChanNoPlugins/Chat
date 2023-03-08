@@ -66,6 +66,10 @@ internal class FallbackConfig : IConfig {
     override var consoleTemplate: String
         get() = "<CONSOLE to :player_to:> :message:"
         set(_) {}
+    
+    override var fromConsoleTemplate: String
+        get() = "<:player_from: to CONSOLE> :message:"
+        set(_) {}
 
     override var substituteEvents: Boolean
         get() = false
