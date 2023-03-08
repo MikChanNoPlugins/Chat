@@ -11,7 +11,7 @@ internal class FallbackFormatter(private val plugin: ChatPlugin) : BaseFormatter
         playerName: String,
         template: String,
         message: String,
-        alwaysColors: Boolean = false,
+        alwaysTranslateColors: Boolean = false,
     ): String {
         return prepareTemplate(template,
             { playerName },
@@ -21,7 +21,7 @@ internal class FallbackFormatter(private val plugin: ChatPlugin) : BaseFormatter
             { playerName },
             { playerName },
             {
-                if (alwaysColors || player.hasPermission("mcn.chat.colors")) {
+                if (alwaysTranslateColors || player.hasPermission("mcn.chat.colors")) {
                     ChatColor.translateAlternateColorCodes(
                         '&', message
                     )
