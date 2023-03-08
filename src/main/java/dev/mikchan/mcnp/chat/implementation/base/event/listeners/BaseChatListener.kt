@@ -14,7 +14,7 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
         if (!event.player.hasPermission("mcn.chat.global") && !isPreview) throw NoPermissionException()
 
         val recipients = plugin.server.onlinePlayers.toSet()
-        val formattedMessage = plugin.formatter.formatGlobal(event.player, "%2\$s")
+        val formattedMessage = plugin.formatter.formatGlobal(event.player, msg)
 
         return MCNChatEvent(event.player, recipients, true, msg, formattedMessage, isPreview, event.isAsynchronous)
     }
@@ -27,7 +27,7 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
         val recipients = plugin.server.onlinePlayers.toList().filter { player -> player.world == event.player.world }
             .filter { player -> player.location.distance(event.player.location) < localRadius }.toSet()
 
-        val formattedMessage = plugin.formatter.formatLocal(event.player, "%2\$s")
+        val formattedMessage = plugin.formatter.formatLocal(event.player, msg)
 
         return MCNChatEvent(event.player, recipients, false, msg, formattedMessage, isPreview, event.isAsynchronous)
     }
@@ -54,17 +54,15 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
             if (plugin.config.substituteEvents) {
                 if (!isPreview) {
                     plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-                        val fMsg = String.format(mcncEvent.formattedMessage, mcncEvent.sender, mcncEvent.message)
-                        plugin.server.consoleSender.sendMessage(fMsg)
+                        plugin.server.consoleSender.sendMessage(mcncEvent.formattedMessage)
                         for (recipient in mcncEvent.recipients) {
-                            recipient.sendMessage(mcncEvent.sender.uniqueId, fMsg)
+                            recipient.sendMessage(mcncEvent.sender.uniqueId, mcncEvent.formattedMessage)
                         }
                     }
                 }
 
                 return false
             } else {
-                event.message = mcncEvent.message
                 event.format = mcncEvent.formattedMessage
                 event.recipients.clear()
                 event.recipients.addAll(mcncEvent.recipients)
