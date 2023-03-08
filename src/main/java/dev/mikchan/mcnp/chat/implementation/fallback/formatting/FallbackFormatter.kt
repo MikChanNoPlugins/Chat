@@ -13,8 +13,7 @@ internal class FallbackFormatter(private val plugin: ChatPlugin) : BaseFormatter
         alwaysTranslateColors: Boolean = false,
         to: (() -> String?)? = null
     ): String {
-        val name = { "%1\$s" }
-
+        val name = { player.displayName }
         return prepareTemplate(template, name, to ?: name, name, name, name, name) {
             if (alwaysTranslateColors || player.hasPermission("mcn.chat.colors")) {
                 ChatColor.translateAlternateColorCodes(
