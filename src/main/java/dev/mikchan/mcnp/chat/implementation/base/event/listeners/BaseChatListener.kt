@@ -63,7 +63,7 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
 
                 return false
             } else {
-                event.format = mcncEvent.formattedMessage
+                event.format = mcncEvent.formattedMessage.replace("%", "%%")
                 event.recipients.clear()
                 event.recipients.addAll(mcncEvent.recipients)
 
