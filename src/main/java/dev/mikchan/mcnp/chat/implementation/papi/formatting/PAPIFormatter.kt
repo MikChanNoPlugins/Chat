@@ -51,8 +51,6 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
             { prepareGlobalPlayer(from) },
             { prepareLocalPlayer(from) },
             { prepareSpyPlayer(from) },
-            { null },
-            { it.replace("%", "%%") },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -68,8 +66,6 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
             { prepareGlobalPlayer(to) },
             { prepareLocalPlayer(to) },
             { prepareSpyPlayer(to) },
-            { null },
-            { it.replace("%", "%%") },
             {
                 ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -85,8 +81,6 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
             { prepareGlobalPlayer(from) },
             { prepareLocalPlayer(from) },
             { prepareSpyPlayer(from) },
-            { null },
-            { it.replace("%", "%%") },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -102,8 +96,6 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
             { prepareGlobalPlayer(from) },
             { prepareLocalPlayer(from) },
             { prepareSpyPlayer(from) },
-            { null },
-            { it.replace("%", "%%") },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
@@ -119,8 +111,6 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
             { prepareGlobalPlayer(from) },
             { prepareLocalPlayer(from) },
             { prepareSpyPlayer(from) },
-            { null },
-            { it.replace("%", "%%") },
             {
                 if (from.hasPermission("mcn.chat.colors")) ChatColor.translateAlternateColorCodes(
                     '&', message
