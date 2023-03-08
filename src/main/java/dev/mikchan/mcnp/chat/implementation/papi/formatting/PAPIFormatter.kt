@@ -73,6 +73,21 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
             })
     }
 
+    override fun formatToConsole(from: Player, message: String): String {
+        return prepareTemplate(plugin.config.consoleTemplate,
+            { prepareFromPlayer(from) },
+            { prepareToPlayer(from) },
+            { preparePlayer(from) },
+            { prepareGlobalPlayer(from) },
+            { prepareLocalPlayer(from) },
+            { prepareSpyPlayer(from) },
+            {
+                ChatColor.translateAlternateColorCodes(
+                    '&', message
+                )
+            })
+    }
+
     override fun formatGlobal(from: Player, message: String): String {
         return prepareTemplate(plugin.config.globalTemplate,
             { prepareFromPlayer(from) },

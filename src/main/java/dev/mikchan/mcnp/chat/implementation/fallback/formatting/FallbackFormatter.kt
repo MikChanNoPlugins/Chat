@@ -36,6 +36,21 @@ internal class FallbackFormatter(private val plugin: ChatPlugin) : BaseFormatter
             })
     }
 
+    override fun formatToConsole(from: Player, message: String): String {
+        return prepareTemplate(plugin.config.consoleTemplate,
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            { "%1\$s" },
+            {
+                ChatColor.translateAlternateColorCodes(
+                    '&', message
+                )
+            })
+    }
+
     override fun formatGlobal(from: Player, message: String): String {
         return prepareTemplate(plugin.config.globalTemplate,
             { "%1\$s" },
