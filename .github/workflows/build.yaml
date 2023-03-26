@@ -26,7 +26,7 @@ jobs:
       - name: Gradle Build
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: shadowJar --scan
+          arguments: build --scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: dev-${{ steps.commit.outputs.short }}
