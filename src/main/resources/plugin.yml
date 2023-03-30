@@ -13,6 +13,7 @@ load: STARTUP
 
 softdepend:
   - PlaceholderAPI
+  - DiscordSRV
 
 commands:
   msg:

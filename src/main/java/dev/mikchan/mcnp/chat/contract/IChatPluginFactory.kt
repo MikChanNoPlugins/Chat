@@ -7,6 +7,7 @@ import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
 import dev.mikchan.mcnp.chat.contract.keys.IKeys
 import dev.mikchan.mcnp.chat.contract.log.IChatLogger
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
+import github.scarsz.discordsrv.DiscordSRV
 
 /**
  * An abstract factory
@@ -60,4 +61,11 @@ interface IChatPluginFactory {
      * @return A new chat logger
      */
     fun createChatLogger(): IChatLogger
+
+    /**
+     * Creates DiscordSRV instance
+     *
+     * @return DiscordSRV instance
+     */
+    fun createDiscordSRV(): DiscordSRV?
 }

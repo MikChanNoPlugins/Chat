@@ -18,6 +18,7 @@ import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.commands.SpigotV1m16p
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.SpigotV1m16p5EventManager
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.keys.SpigotV1m16p5Keys
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.users.SpigotV1m16p5UserManager
+import github.scarsz.discordsrv.DiscordSRV
 import me.clip.placeholderapi.PlaceholderAPIPlugin
 import java.io.File
 
@@ -62,5 +63,11 @@ internal open class SpigotV1m16p5ChatPluginFactory(private val plugin: ChatPlugi
 
     override fun createChatLogger(): IChatLogger {
         return FileChatLogger(plugin)
+    }
+
+    override fun createDiscordSRV(): DiscordSRV? {
+        val discordSrv = plugin.server.pluginManager.getPlugin("DiscordSRV") as? DiscordSRV ?: return null
+        plugin.logger.info("DiscordSRV is found. Hooking in...")
+        return discordSrv
     }
 }
