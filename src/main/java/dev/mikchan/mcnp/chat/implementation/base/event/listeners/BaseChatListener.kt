@@ -51,10 +51,19 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
                 return false
             }
 
+            // I have not a single idea if I do this correctly or not
+            plugin.discordSrv?.processChatMessage(
+                mcncEvent.sender,
+                mcncEvent.message,
+                if (mcncEvent.isGlobal) "global" else "local",
+                mcncEvent.isCancelled,
+                event
+            )
+
             if (plugin.config.substituteEvents) {
                 if (!isPreview) {
                     plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-                        plugin.server.consoleSender.sendMessage(mcncEvent.formattedMessage)
+                        plugin.server.consoleSender.sendMessage(mcncEvent.sender.uniqueId, mcncEvent.formattedMessage)
                         for (recipient in mcncEvent.recipients) {
                             recipient.sendMessage(mcncEvent.sender.uniqueId, mcncEvent.formattedMessage)
                         }
