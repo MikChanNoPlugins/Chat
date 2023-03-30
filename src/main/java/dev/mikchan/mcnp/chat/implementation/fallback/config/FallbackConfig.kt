@@ -1,6 +1,7 @@
 package dev.mikchan.mcnp.chat.implementation.fallback.config
 
 import dev.mikchan.mcnp.chat.contract.config.IConfig
+import dev.mikchan.mcnp.chat.contract.config.IDiscordSrvConfig
 
 internal class FallbackConfig : IConfig {
     override fun reload(): Boolean {
@@ -66,7 +67,7 @@ internal class FallbackConfig : IConfig {
     override var consoleTemplate: String
         get() = "<CONSOLE to :player_to:> :message:"
         set(_) {}
-    
+
     override var fromConsoleTemplate: String
         get() = "<:player_from: to CONSOLE> :message:"
         set(_) {}
@@ -74,4 +75,6 @@ internal class FallbackConfig : IConfig {
     override var substituteEvents: Boolean
         get() = false
         set(_) {}
+
+    override val discordSRV: IDiscordSrvConfig by lazy { FallbackDiscordSrvConfig() }
 }
