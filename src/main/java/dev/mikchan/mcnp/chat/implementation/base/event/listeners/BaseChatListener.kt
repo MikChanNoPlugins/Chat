@@ -2,7 +2,6 @@ package dev.mikchan.mcnp.chat.implementation.base.event.listeners
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.events.MCNChatEvent
-import github.scarsz.discordsrv.util.DiscordUtil
 import org.bukkit.ChatColor
 import org.bukkit.event.player.AsyncPlayerChatEvent
 
@@ -50,12 +49,6 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
 
             if (mcncEvent.isCancelled) {
                 return false
-            }
-
-            if (mcncEvent.isGlobal) {
-                plugin.discordSrv?.getOptionalTextChannel("mcn.chat:global")?.let { textChannel ->
-                    DiscordUtil.sendMessage(textChannel, ChatColor.stripColor(mcncEvent.formattedMessage))
-                }
             }
 
             if (plugin.config.substituteEvents) {
