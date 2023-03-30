@@ -53,13 +53,9 @@ dependencies {
     compileOnly "com.discordsrv:discordsrv:1.26.3-SNAPSHOT"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
-    compileOnly "dev.dejvokep:boosted-yaml-spigot:1.4"
+    implementation "dev.dejvokep:boosted-yaml-spigot:1.4"
 
-    implementation "org.bstats:bstats-bukkit:3.0.1"
     shadow "org.bstats:bstats-bukkit:3.0.1"
-
-    implementation "org.bstats:bstats-bukkit:3.0.1"
-    shadow "org.bstats:bstats-base:3.0.1"
 }
 
 def targetJavaVersion = 8
@@ -114,14 +110,17 @@ javadocJar {
 
 shadowJar {
     archiveClassifier.set(null)
-
-    dependencies {
-        include(dependency("org.bstats:bstats-bukkit"))
-        include(dependency("org.bstats:bstats-base"))
-    }
-
-    relocate "org.bstats", "dev.mikchan.mcnp.chat.shadow.org.bstats"
+    configurations = [project.configurations.shadow]
+    minimize()
 }
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "dev.mikchan.mcnp.chat.shadow"
+}
+tasks.shadowJar.dependsOn tasks.relocateShadowJar
 
 publishing {
     repositories {
