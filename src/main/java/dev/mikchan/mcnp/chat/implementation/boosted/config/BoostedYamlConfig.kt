@@ -8,6 +8,7 @@ import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings
 import dev.dejvokep.boostedyaml.spigot.SpigotSerializer
 import dev.mikchan.mcnp.chat.contract.config.IConfig
+import dev.mikchan.mcnp.chat.contract.config.IDiscordSrvConfig
 import java.io.File
 import java.io.InputStream
 
@@ -143,4 +144,6 @@ internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfi
             config.set("substituteEvents", value)
             config.save()
         }
+
+    override val discordSRV: IDiscordSrvConfig by lazy { BoostedYamlDiscordSrvConfig(config) }
 }

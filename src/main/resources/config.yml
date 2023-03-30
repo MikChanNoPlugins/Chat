@@ -1,5 +1,5 @@
 # This is an automatic property, do not change!
-configVersion: 5
+configVersion: 6
 
 # Should enable logging messages?
 enableLog: false
@@ -62,3 +62,8 @@ toTemplate: '%player_name%'
 
 # Cancel all AsyncPlayerChatEvent and rely solely on MCNChatEvent
 substituteEvents: false
+
+# DiscordSRV integration
+discordSRV:
+  enabled: false
+  channelName: 'mcn.chat:global'

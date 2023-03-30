@@ -132,4 +132,9 @@ interface IConfig {
      * Cancel all [org.bukkit.event.player.AsyncPlayerChatEvent] and rely solely on [dev.mikchan.mcnp.chat.contract.events.MCNChatEvent]
      */
     var substituteEvents: Boolean
+
+    /**
+     * DiscordSRV configuration
+     */
+    val discordSRV: IDiscordSrvConfig
 }

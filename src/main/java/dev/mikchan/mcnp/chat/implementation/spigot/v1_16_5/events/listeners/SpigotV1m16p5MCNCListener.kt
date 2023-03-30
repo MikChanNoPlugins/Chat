@@ -2,6 +2,8 @@ package dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.listeners
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.events.MCNChatEvent
+import github.scarsz.discordsrv.util.DiscordUtil
+import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -25,10 +27,8 @@ internal class SpigotV1m16p5MCNCListener(private val plugin: ChatPlugin) : Liste
         if (event.isGlobal) return
 
         plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-            val spies = plugin.server.onlinePlayers
-                .filter { player -> !event.recipients.contains(player) }
-                .filter { player -> checkSpy(player) }
-                .toSet()
+            val spies = plugin.server.onlinePlayers.filter { player -> !event.recipients.contains(player) }
+                .filter { player -> checkSpy(player) }.toSet()
 
             if (spies.isEmpty()) return@scheduleSyncDelayedTask
 
@@ -41,14 +41,24 @@ internal class SpigotV1m16p5MCNCListener(private val plugin: ChatPlugin) : Liste
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun onLogEvent(event: MCNChatEvent) {
-        if(event.isCancelled) return
-        if(event.isPreview) return
+        if (event.isCancelled) return
+        if (event.isPreview) return
 
-        if(event.isGlobal) {
+        if (event.isGlobal) {
             plugin.chatLogger.logGlobal(event.sender, event.message)
-        }
-        else {
+        } else {
             plugin.chatLogger.logLocal(event.sender, event.message)
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    fun onDiscordEvent(event: MCNChatEvent) {
+        if (!plugin.config.discordSRV.enabled) return
+        if (event.isPreview) return
+        if (!event.isGlobal) return
+
+        plugin.discordSRV?.getOptionalTextChannel(plugin.config.discordSRV.channelName)?.let { textChannel ->
+            DiscordUtil.sendMessage(textChannel, ChatColor.stripColor(event.formattedMessage))
         }
     }
 }

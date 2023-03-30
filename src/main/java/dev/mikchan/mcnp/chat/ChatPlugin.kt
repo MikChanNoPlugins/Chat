@@ -29,7 +29,7 @@ class ChatPlugin : JavaPlugin() {
     val eventManager: IEventManager by lazy { factory.createEventManager() }
     val keys: IKeys by lazy { factory.createKeys() }
     val chatLogger: IChatLogger by lazy { factory.createChatLogger() }
-    val discordSrv: DiscordSRV? by lazy { factory.createDiscordSRV() }
+    val discordSRV: DiscordSRV? by lazy { factory.createDiscordSRV() }
 
     override fun onEnable() {
         commandManager.enableAll()
