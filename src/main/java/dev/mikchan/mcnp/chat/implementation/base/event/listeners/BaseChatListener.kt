@@ -56,7 +56,7 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
                 mcncEvent.sender,
                 mcncEvent.message,
                 if (mcncEvent.isGlobal) "mcn.chat:global" else "mcn.chat:local",
-                mcncEvent.isCancelled,
+                mcncEvent.isCancelled || mcncEvent.isPreview,
                 event
             )
 
