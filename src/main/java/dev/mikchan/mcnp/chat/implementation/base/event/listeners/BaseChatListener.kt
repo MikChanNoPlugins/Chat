@@ -55,7 +55,7 @@ internal open class BaseChatListener(private val plugin: ChatPlugin) {
             plugin.discordSrv?.processChatMessage(
                 mcncEvent.sender,
                 mcncEvent.message,
-                if (mcncEvent.isGlobal) "global" else "local",
+                if (mcncEvent.isGlobal) "mcn.chat:global" else "mcn.chat:local",
                 mcncEvent.isCancelled,
                 event
             )
