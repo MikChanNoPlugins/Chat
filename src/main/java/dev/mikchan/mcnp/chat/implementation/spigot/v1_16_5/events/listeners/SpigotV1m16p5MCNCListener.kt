@@ -48,8 +48,8 @@ internal class SpigotV1m16p5MCNCListener(private val plugin: ChatPlugin) : Liste
         if (event.isGlobal) return
 
         plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
-            if (event.recipients.any { it.gameMode != GameMode.SPECTATOR }) return@scheduleSyncDelayedTask
-            event.sender.sendMessage(plugin.config.localNotification)
+            if (event.recipients.any { it.gameMode != GameMode.SPECTATOR && it != event.sender }) return@scheduleSyncDelayedTask
+            event.sender.sendMessage(plugin.formatter.formatPlain(event.sender, plugin.config.localNotification))
         }
     }
 
