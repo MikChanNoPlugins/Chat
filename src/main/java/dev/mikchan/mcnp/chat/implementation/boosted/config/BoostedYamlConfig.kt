@@ -38,6 +38,22 @@ internal class BoostedYamlConfig(document: File, resource: InputStream) : IConfi
             config.set("enableLocal", value)
             config.save()
         }
+    override var enableLocalNotification: Boolean
+        get() = config.getBoolean("enableLocalNotification", false)
+        set(value) {
+            config.set("enableLocalNotification", value)
+            config.save()
+        }
+
+    override var localNotification: String
+        get() = config.getString(
+            "localNotification",
+            "There's no one to receive the message. Start the message with the '!' symbol to send a global message."
+        )
+        set(value) {
+            config.set("localNotification", value)
+            config.save()
+        }
 
     override var localRadius: Int
         get() = config.getInt("localRadius", 100)

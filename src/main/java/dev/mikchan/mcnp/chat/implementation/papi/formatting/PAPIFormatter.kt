@@ -64,4 +64,8 @@ internal class PAPIFormatter(private val plugin: ChatPlugin) : BaseFormatter(plu
     override fun formatSpy(from: Player, message: String): String {
         return format(from, plugin.config.spyTemplate, message)
     }
+
+    override fun formatPlain(player: Player, message: String): String {
+        return prepareColors(player, message)
+    }
 }

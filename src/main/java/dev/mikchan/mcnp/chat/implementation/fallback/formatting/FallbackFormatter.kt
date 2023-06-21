@@ -50,4 +50,8 @@ internal class FallbackFormatter(private val plugin: ChatPlugin) : BaseFormatter
     override fun formatSpy(from: Player, message: String): String {
         return format(from, plugin.config.spyTemplate, message)
     }
+
+    override fun formatPlain(player: Player, message: String): String {
+        return ChatColor.translateAlternateColorCodes('&', message)
+    }
 }

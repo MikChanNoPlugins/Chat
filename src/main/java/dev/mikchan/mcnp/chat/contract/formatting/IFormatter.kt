@@ -66,4 +66,14 @@ interface IFormatter {
      * @return The formatted message.
      */
     fun formatSpy(from: Player, message: String): String
+
+    /**
+     * Formats plain message
+     *
+     * @param player The player context
+     * @param message The text of the message
+     *
+     * @return The formatted message
+     */
+    fun formatPlain(player: Player, message: String): String
 }

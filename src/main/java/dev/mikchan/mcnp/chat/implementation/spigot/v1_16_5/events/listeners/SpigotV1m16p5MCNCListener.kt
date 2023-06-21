@@ -2,6 +2,7 @@ package dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.listeners
 
 import dev.mikchan.mcnp.chat.ChatPlugin
 import dev.mikchan.mcnp.chat.contract.events.MCNChatEvent
+import org.bukkit.GameMode
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -39,15 +40,27 @@ internal class SpigotV1m16p5MCNCListener(private val plugin: ChatPlugin) : Liste
         }
     }
 
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    fun onMCNCLocalNotificationEvent(event: MCNChatEvent) {
+        if (event.isCancelled) return
+        if (!plugin.config.enableLocalNotification) return
+        if (event.isPreview) return
+        if (event.isGlobal) return
+
+        plugin.server.scheduler.scheduleSyncDelayedTask(plugin) {
+            if (event.recipients.any { it.gameMode != GameMode.SPECTATOR }) return@scheduleSyncDelayedTask
+            event.sender.sendMessage(plugin.config.localNotification)
+        }
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun onLogEvent(event: MCNChatEvent) {
-        if(event.isCancelled) return
-        if(event.isPreview) return
+        if (event.isCancelled) return
+        if (event.isPreview) return
 
-        if(event.isGlobal) {
+        if (event.isGlobal) {
             plugin.chatLogger.logGlobal(event.sender, event.message)
-        }
-        else {
+        } else {
             plugin.chatLogger.logLocal(event.sender, event.message)
         }
     }

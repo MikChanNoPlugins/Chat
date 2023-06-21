@@ -24,6 +24,16 @@ interface IConfig {
     var enableLocal: Boolean
 
     /**
+     * Is local notification enabled
+     */
+    var enableLocalNotification: Boolean
+
+    /**
+     * The text of the local notification
+     */
+    var localNotification: String
+
+    /**
      * The radius of the local chat.
      *
      * If [enableLocal] is `true`, all messages sent by a player that do not start with [globalPrefix] will only by visible by players within this radius.

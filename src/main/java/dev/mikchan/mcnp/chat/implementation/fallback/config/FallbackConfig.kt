@@ -15,6 +15,14 @@ internal class FallbackConfig : IConfig {
         get() = false
         set(_) {}
 
+    override var enableLocalNotification: Boolean
+        get() = false
+        set(_) {}
+
+    override var localNotification: String
+        get() = ""
+        set(_) {}
+
     override var localRadius: Int
         get() = 100
         set(_) {}
@@ -66,7 +74,7 @@ internal class FallbackConfig : IConfig {
     override var consoleTemplate: String
         get() = "<CONSOLE to :player_to:> :message:"
         set(_) {}
-    
+
     override var fromConsoleTemplate: String
         get() = "<:player_from: to CONSOLE> :message:"
         set(_) {}
