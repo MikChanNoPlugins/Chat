@@ -12,6 +12,9 @@ import dev.mikchan.mcnp.chat.implementation.spigot.v1_19.SpigotV1m19ChatPluginFa
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_19_1.SpigotV1m19p1ChatPluginFactory
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_19_2.SpigotV1m19p2ChatPluginFactory
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_19_3.SpigotV1m19p3ChatPluginFactory
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_19_4.SpigotV1m19p4ChatPluginFactory
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_20.SpigotV1m20ChatPluginFactory
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_20_1.SpigotV1m20p1ChatPluginFactory
 
 
 internal object FactorySelector {
@@ -57,7 +60,13 @@ internal object FactorySelector {
                     0 -> SpigotV1m19ChatPluginFactory(plugin)
                     1 -> SpigotV1m19p1ChatPluginFactory(plugin)
                     2 -> SpigotV1m19p2ChatPluginFactory(plugin)
-                    else -> SpigotV1m19p3ChatPluginFactory(plugin)
+                    3 -> SpigotV1m19p3ChatPluginFactory(plugin)
+                    else -> SpigotV1m19p4ChatPluginFactory(plugin)
+                }
+
+                20 -> when (version.patch) {
+                    0 -> SpigotV1m20ChatPluginFactory(plugin)
+                    else -> SpigotV1m20p1ChatPluginFactory(plugin)
                 }
 
                 else -> SpigotLatestChatPluginFactory(plugin)
