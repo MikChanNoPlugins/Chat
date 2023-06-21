@@ -1,5 +1,5 @@
 # This is an automatic property, do not change!
-configVersion: 5
+configVersion: 6
 
 # Should enable logging messages?
 enableLog: false
@@ -9,6 +9,12 @@ enableLog: false
 # will be received only by users within `localRadius`
 enableLocal: false
 localRadius: 100
+
+# Local notification
+# If the player sends the message and there's no one to receive it
+# they will get this notification
+enableLocalNotification: false
+localNotification: "There's no one to receive the message. Start the message with the '!' symbol to send a global message."
 
 # If `enableLocal` is true, this prefix should be put
 # in front of messages user wants to send globally (e.g. "!Hello, everyone")
