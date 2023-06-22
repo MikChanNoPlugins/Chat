@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "org.jetbrains.kotlin.jvm" version "1.8.10"
+    id "org.jetbrains.kotlin.jvm" version "1.8.22"
     id "org.jetbrains.dokka" version "1.7.20"
     id "maven-publish"
     id "com.github.johnrengelman.shadow" version "7.1.2"
@@ -41,18 +41,18 @@ repositories {
 }
 
 dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT"
+    compileOnly "org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT"
 
     compileOnly "me.clip:placeholderapi:2.10.9"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
     compileOnly "dev.dejvokep:boosted-yaml-spigot:1.4"
 
-    implementation "org.bstats:bstats-bukkit:3.0.1"
-    shadow "org.bstats:bstats-bukkit:3.0.1"
+    implementation "org.bstats:bstats-bukkit:3.0.2"
+    shadow "org.bstats:bstats-bukkit:3.0.2"
 
-    implementation "org.bstats:bstats-bukkit:3.0.1"
-    shadow "org.bstats:bstats-base:3.0.1"
+    implementation "org.bstats:bstats-base:3.0.2"
+    shadow "org.bstats:bstats-base:3.0.2"
 }
 
 def targetJavaVersion = 8
