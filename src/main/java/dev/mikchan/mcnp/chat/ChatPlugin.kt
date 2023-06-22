@@ -7,6 +7,7 @@ import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
 import dev.mikchan.mcnp.chat.contract.keys.IKeys
 import dev.mikchan.mcnp.chat.contract.log.IChatLogger
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
+import dev.mikchan.mcnp.chat.contract.utility.IUtility
 import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -28,6 +29,7 @@ class ChatPlugin : JavaPlugin() {
     val eventManager: IEventManager by lazy { factory.createEventManager() }
     val keys: IKeys by lazy { factory.createKeys() }
     val chatLogger: IChatLogger by lazy { factory.createChatLogger() }
+    val utility: IUtility by lazy { factory.createUtility() }
 
     override fun onEnable() {
         commandManager.enableAll()

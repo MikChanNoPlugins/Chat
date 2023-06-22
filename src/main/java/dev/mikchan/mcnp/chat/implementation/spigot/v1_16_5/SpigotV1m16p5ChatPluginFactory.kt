@@ -9,6 +9,7 @@ import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
 import dev.mikchan.mcnp.chat.contract.keys.IKeys
 import dev.mikchan.mcnp.chat.contract.log.IChatLogger
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
+import dev.mikchan.mcnp.chat.contract.utility.IUtility
 import dev.mikchan.mcnp.chat.implementation.boosted.config.BoostedYamlConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.config.FallbackConfig
 import dev.mikchan.mcnp.chat.implementation.fallback.formatting.FallbackFormatter
@@ -18,6 +19,7 @@ import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.commands.SpigotV1m16p
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.events.SpigotV1m16p5EventManager
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.keys.SpigotV1m16p5Keys
 import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.users.SpigotV1m16p5UserManager
+import dev.mikchan.mcnp.chat.implementation.spigot.v1_16_5.utility.SpigotV1m16p5Utility
 import me.clip.placeholderapi.PlaceholderAPIPlugin
 import java.io.File
 
@@ -62,5 +64,9 @@ internal open class SpigotV1m16p5ChatPluginFactory(private val plugin: ChatPlugi
 
     override fun createChatLogger(): IChatLogger {
         return FileChatLogger(plugin)
+    }
+
+    override fun createUtility(): IUtility {
+        return SpigotV1m16p5Utility()
     }
 }
