@@ -7,6 +7,7 @@ import dev.mikchan.mcnp.chat.contract.formatting.IFormatter
 import dev.mikchan.mcnp.chat.contract.keys.IKeys
 import dev.mikchan.mcnp.chat.contract.log.IChatLogger
 import dev.mikchan.mcnp.chat.contract.users.IUserManager
+import dev.mikchan.mcnp.chat.contract.utility.IUtility
 
 /**
  * An abstract factory
@@ -60,4 +61,11 @@ interface IChatPluginFactory {
      * @return A new chat logger
      */
     fun createChatLogger(): IChatLogger
+
+    /**
+     * Creates utility object
+     *
+     * @return A new utility object
+     */
+    fun createUtility(): IUtility
 }

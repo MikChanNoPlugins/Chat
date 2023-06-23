@@ -29,6 +29,7 @@ internal class SpigotV1m16p5MCNCListener(private val plugin: ChatPlugin) : Liste
             val spies = plugin.server.onlinePlayers
                 .filter { player -> !event.recipients.contains(player) }
                 .filter { player -> checkSpy(player) }
+                .filter { player -> !plugin.userManager.doesIgnore(player, event.sender) }
                 .toSet()
 
             if (spies.isEmpty()) return@scheduleSyncDelayedTask
@@ -51,6 +52,11 @@ internal class SpigotV1m16p5MCNCListener(private val plugin: ChatPlugin) : Liste
             if (event.recipients.any { it.gameMode != GameMode.SPECTATOR && it != event.sender }) return@scheduleSyncDelayedTask
             event.sender.sendMessage(plugin.formatter.formatPlain(event.sender, plugin.config.localNotification))
         }
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    fun onMCNCFilterEvent(event: MCNChatEvent) {
+        event.recipients = event.recipients.filter { !plugin.userManager.doesIgnore(it, event.sender) }.toSet()
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)

@@ -40,6 +40,14 @@ commands:
     permission: mcn.chat.spy
     description: Enables spy feature
 
+  ignore:
+    permission: mcn.chat.ignore
+    description: Adds a player to the ignore list
+
+  unignore:
+    permission: mcn.chat.ignore
+    description: Removes a player from the ignore list
+
   mcn_chat:
     aliases:
       - chat
@@ -53,6 +61,7 @@ permissions:
       - mcn.chat.reply
       - mcn.chat.global
       - mcn.chat.local
+      - mcn.chat.ignore
   mcn.chat.msg:
     default: true
   mcn.chat.reply:
@@ -60,6 +69,8 @@ permissions:
   mcn.chat.global:
     default: true
   mcn.chat.local:
+    default: true
+  mcn.chat.ignore:
     default: true
 
   mcn.chat.colors:
