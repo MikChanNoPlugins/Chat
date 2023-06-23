@@ -13,6 +13,7 @@ internal class SpigotV1m16p5CommandManager(chatPlugin: ChatPlugin) : BaseCommand
             "reply" to ReplyCommand(plugin, messageHistory),
             "spy" to SpyCommand(plugin),
             "ignore" to IgnoreCommand(plugin),
+            "unignore" to UnignoreCommand(plugin),
         )
     },
 )
