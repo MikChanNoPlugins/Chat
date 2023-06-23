@@ -20,24 +20,24 @@ class MCNChatEvent(
     /**
      * Set of recipients that this chat message will be displayed to.
      */
-    val recipients: Set<Player>,
+    val recipients: MutableSet<Player>,
 
     /**
      * Is this message globally visible.
      *
-     * If [dev.mikchan.mcnp.chat.config.IConfig.enableLocal] is `false`, this value is always `true`.
+     * If [dev.mikchan.mcnp.chat.contract.config.IConfig] is `false`, this value is always `true`.
      */
-    val isGlobal: Boolean,
+    var isGlobal: Boolean,
 
     /**
      * The raw message that the player is attempting to send.
      */
-    val message: String,
+    var message: String,
 
     /**
      * Fully formatted message.
      */
-    val formattedMessage: String,
+    var formattedMessage: String,
 
     /**
      * Is the message meant to be previewed in the secure chat thing (meh)
