@@ -33,4 +33,13 @@ interface IUserManager {
      * @return The player object, if found. `null` if player is not found, not online, or [search] is not a valid UUID.
      */
     fun findByUUID(search: String): Player?
+
+    /**
+     * Checks if [ignorer] ignores [ignored]
+     *
+     * @param ignorer The player who is ignoring
+     * @param ignored The player who is being ignored
+     * @return Is [ignorer] ignores [ignored]
+     */
+    fun doesIgnore(ignorer: Player, ignored: Player): Boolean
 }

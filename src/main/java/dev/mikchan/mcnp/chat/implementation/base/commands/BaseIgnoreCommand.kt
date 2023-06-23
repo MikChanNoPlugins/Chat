@@ -10,6 +10,7 @@ import java.util.*
 internal abstract class BaseIgnoreCommand(private val plugin: ChatPlugin) : ICommand {
     protected abstract fun processData(data: Set<UUID>, ignorePlayer: Player): Set<UUID>
     protected abstract val ignorePhrase: String
+
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         val player = sender as? Player
 

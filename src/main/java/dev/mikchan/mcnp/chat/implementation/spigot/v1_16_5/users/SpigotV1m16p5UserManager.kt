@@ -34,4 +34,15 @@ internal class SpigotV1m16p5UserManager(private val plugin: ChatPlugin) : IUserM
             null
         }
     }
+
+    override fun doesIgnore(ignorer: Player, ignored: Player): Boolean {
+        if (!ignored.hasPermission("mcn.chat.ignore")) return false
+        val ignoreList = plugin.utility.byteArrayToUniqueIdSet(
+            ignorer.persistentDataContainer.get(
+                plugin.keys.ignore.key,
+                plugin.keys.ignore.type
+            ) ?: ByteArray(0)
+        )
+        return ignoreList.contains(ignored.uniqueId)
+    }
 }
