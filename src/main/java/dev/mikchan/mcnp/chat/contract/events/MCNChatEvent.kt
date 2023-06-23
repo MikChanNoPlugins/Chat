@@ -25,7 +25,7 @@ class MCNChatEvent(
     /**
      * Is this message globally visible.
      *
-     * If [dev.mikchan.mcnp.chat.contract.config.IConfig] is `false`, this value is always `true`.
+     * If [dev.mikchan.mcnp.chat.contract.config.IConfig.enableLocal] is `false`, this value is always `true`.
      */
     var isGlobal: Boolean,
 
