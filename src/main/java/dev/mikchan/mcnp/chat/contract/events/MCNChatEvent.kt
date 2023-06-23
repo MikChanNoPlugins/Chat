@@ -20,7 +20,7 @@ class MCNChatEvent(
     /**
      * Set of recipients that this chat message will be displayed to.
      */
-    val recipients: MutableSet<Player>,
+    var recipients: Set<Player>,
 
     /**
      * Is this message globally visible.
